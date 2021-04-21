@@ -7,7 +7,6 @@ import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { CambiarContraseniaComponent } from './cambiar-contrasenia/cambiar-contrasenia.component';
 import { ResetearContraseniaComponent } from './resetear-contrasenia/resetear-contrasenia.component';
 
-
 @NgModule({
   declarations: [
     IniciarSesionComponent,

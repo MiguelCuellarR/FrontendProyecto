@@ -7,6 +7,7 @@ import { BarraNavegacionSuperiorComponent } from './publico/paginaMaestra/barra-
 import { MenuLateralComponent } from './publico/paginaMaestra/menu-lateral/menu-lateral.component';
 import { PieDePaginaComponent } from './publico/paginaMaestra/pie-de-pagina/pie-de-pagina.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
+import { Error404Component } from './publico/errores/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { InicioComponent } from './publico/inicio/inicio.component';
     BarraNavegacionSuperiorComponent,
     MenuLateralComponent,
     PieDePaginaComponent,
-    InicioComponent
+    InicioComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
