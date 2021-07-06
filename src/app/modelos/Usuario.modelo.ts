@@ -10,6 +10,6 @@ export class UsuarioModelo {
     contrasena?: String;
     user?: UsuarioModelo;
     token?: String;
-    isLoggedIn?: boolean;
+    isLoggedIn: boolean =false ;
 
 }
