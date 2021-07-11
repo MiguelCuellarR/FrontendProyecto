@@ -1,3 +1,4 @@
+import { UsuarioModule } from "../modulos/usuario/usuario.module";
 
 export class UsuarioModelo {
 
@@ -8,8 +9,8 @@ export class UsuarioModelo {
     correo_electronico?: String;
     telefono_celular?: String;
     contrasena?: String;
-    user?: UsuarioModelo;
+    user?: UsuarioModule;
     token?: String;
-    isLoggedIn: boolean =false ;
+    isLoggedIn: Boolean = false;
 
 }

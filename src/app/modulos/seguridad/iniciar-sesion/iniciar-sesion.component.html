@@ -1,40 +1,47 @@
-
 <div class="row">
-    <div class="col s12 l4 offset-l4">
-      <div class="card grey lighten-3">
-        <div class="card-content">
-          <h4 class="card-title center-align">Identificación de usuarios</h4>
-          <form [formGroup]="fgValidacion" (ngSubmit)="IdentificarUsuario()">
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <input formControlName="correo" type="email" id="email" class="validate" />
-                <label  for="email">Correo Electronico</label>
-                <div class="mensajeValidacion" *ngIf="(obtenerFGV.correo.errors && (obtenerFGV.correo.dirty || obtenerFGV.correo.touched))">
-                  <strong>Este campo es requerido.</strong>
-                </div>
+  <div class="col s12 l4 offset-l4">
+    <div class="card grey lighten-3">
+      <div class="card-content">
+        <h4 class="card-title center-align">Iniciar Sesion</h4>
+        <form [formGroup]="fgValidador" (ngSubmit)="IdentificarUsuario()" >
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input formControlName="correo" type="email" id="email" class="validate" />
+              <label class="active" for="email">Correo Electronico</label>
+              <div
+                *ngIf="ObtenerFgvalidador.correo.errors && (ObtenerFgvalidador.correo.dirty || ObtenerFgvalidador.correo.touched)"
+                class="mensajesValidaciones">
+                <strong *ngIf="ObtenerFgvalidador.correo.errors.required">Este campo es requerido</strong>
+                <strong *ngIf="ObtenerFgvalidador.correo.errors.email">Debe cumplir con un formato de correo electrónico</strong>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">vpn_key</i>
-                <input formControlName="clave" type="password" id="password" class="validate" />
-                <label for="email">Contraseña</label>
-                <div class="mensajeValidacion" *ngIf="(obtenerFGV.clave.errors && (obtenerFGV.clave.dirty || obtenerFGV.clave.touched))">
-                  <strong>Este campo es requerido.</strong>
-                </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">vpn_key</i>
+              <input formControlName="clave" type="password" id="password" class="validate" />
+              <label class="active" for="email">Contraseña</label>
+              <div
+                *ngIf="ObtenerFgvalidador.clave.errors && (ObtenerFgvalidador.clave.dirty || ObtenerFgvalidador.clave.touched)"
+                class="mensajesValidaciones">
+                <strong *ngIf="ObtenerFgvalidador.clave.errors.required">Este campo es requerido</strong>
               </div>
             </div>
-            <div class="row center-align">
-              <button [disabled]="obtenerFGV.correo.errors || obtenerFGV.clave.errors " class="btn waves-effect waves-light" type="submit" name="action">Ingresar
-                <i class="material-icons right">send</i>
-              </button>
-            </div>
-          </form>
-        </div>
+          </div>
+
+          <div class="row center-align">
+            <button [disabled]="ObtenerFgvalidador.correo.errors || ObtenerFgvalidador.clave.errors"
+              class="btn waves-effect waves-light" type="submit" name="action">Identificar
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+
+        </form>
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
+</div>
+<br />

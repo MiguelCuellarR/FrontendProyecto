@@ -9,7 +9,7 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 })
 export class BarraNavegacionSuperiorComponent implements OnInit {
 
-  isLoggedIn: boolean = false;
+  isLoggedIn: Boolean = false;
 
   constructor(private servicioSeguridad: SeguridadService) { }
 

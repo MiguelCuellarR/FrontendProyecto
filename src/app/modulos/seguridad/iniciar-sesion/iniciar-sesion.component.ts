@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioModelo } from 'src/app/modelos/Usuario.modelo';
 import * as crypto from 'crypto-js';
@@ -11,18 +11,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
-  fgValidacion: FormGroup = this.fb.group({});
+  
+  fgValidador: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
     private router: Router) { }
 
   construirFormulario() {
-
-    this.fgValidacion = this.fb.group({
-      correo: ['', Validators.required],
-      clave: ['', Validators.required]
-
+    this.fgValidador = this.fb.group({
+      correo: ['miguel.1701823659@ucaldas.edu.co', [Validators.required, Validators.email]],
+      clave: ['98765', [Validators.required]]
     });
 
   }
@@ -31,26 +30,34 @@ export class IniciarSesionComponent implements OnInit {
     this.construirFormulario();
   }
 
-  get obtenerFGV() {
-    return this.fgValidacion.controls;
+  get ObtenerFgvalidador() {
+    return this.fgValidador.controls;
   }
 
   IdentificarUsuario() {
-    console.log("hola")
-    let usuario = this.obtenerFGV.correo.value;
-    let clave = this.obtenerFGV.clave.value;
-    let modelo = new UsuarioModelo();
-    modelo.correo_electronico = usuario;
-    modelo.contrasena = crypto.MD5(clave).toString();
-    this.servicioSeguridad.identificarUsuario(modelo).subscribe(
-      (data: UsuarioModelo) => {
-        alert("Datos Correctos")
-        this.servicioSeguridad.AlmacenarDatosSesionEnLocal(data)
-        this.router.navigate(["/inicio"]);
+    if (this.fgValidador.invalid) {
+      alert("Formulario Invalido")
+    } else {
+      let usuario = this.ObtenerFgvalidador.correo.value;
+      let clave = this.ObtenerFgvalidador.clave.value;
 
-      }, (error: any) => {
-        alert("Datos invalidos")
-      })
+      let modelo = new UsuarioModelo();
+      modelo.correo_electronico = usuario;
+      modelo.contrasena = crypto.MD5(clave).toString();
+
+      this.servicioSeguridad.identificarUsuario(modelo).subscribe(
+        (data: UsuarioModelo) => {
+          alert("Datos Correctos")
+          this.servicioSeguridad.AlmacenarDatosSesionEnLocal(data)
+          this.router.navigate(["/inicio"]);
+
+        },
+        (error: any) => {
+          alert("Datos invalidos");
+          console.log(error);
+        })
+    }
+
 
   }
 

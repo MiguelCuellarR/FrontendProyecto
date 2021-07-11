@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
 import { UsuarioModelo } from '../modelos/Usuario.modelo';
-import { UsuarioModule } from '../modulos/usuario/usuario.module';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +27,12 @@ export class SeguridadService {
 
   identificarUsuario(usuario: UsuarioModelo): Observable<any> {
 
-    return this.http.post<any>(`${this.urlb}/identificar-usuario`, {
+    return this.http.post<any>(`${this.urlb}/identificar-usuario`, 
+    {
       nombre_usuario: usuario.correo_electronico,
       clave: usuario.contrasena
-
-    }, {
+    }, 
+    {
       headers: new HttpHeaders({})
     });
   }
@@ -45,7 +45,7 @@ export class SeguridadService {
     return this.datosDeSesion.asObservable();
   }
 
-  AlmacenarDatosSesionEnLocal(usuarioModelo : UsuarioModelo): Boolean{
+  AlmacenarDatosSesionEnLocal(usuarioModelo : UsuarioModelo){
     let datos = localStorage.getItem("session-data");
     if (datos){
       return false;
@@ -56,6 +56,11 @@ export class SeguridadService {
       this.RefrescarDatosSesion(usuarioModelo);
       return true;
     }
+  }
+
+  RemoverLocalStorage(){
+    let datos = localStorage.removeItem("session-data");
+    this.RefrescarDatosSesion(new UsuarioModelo());
   }
 
 
