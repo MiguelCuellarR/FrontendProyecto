@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListarSolicitudesComponent } from '../informe/listar-solicitudes/listar-solicitudes.component';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
 import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cliente.component';
@@ -21,70 +20,70 @@ import { ListarSolicitudEstudioComponent } from './solicitudEstudioInmueble/list
 const routes: Routes = [
   //Cliente
   {
-    path: 'cliente/crear-cliente',
+    path: 'crear-cliente',
     component: CrearClienteComponent
   },
   {
-    path: 'cliente/editar-cliente',
+    path: 'editar-cliente',
     component: EditarClienteComponent
   },
   {
-    path: 'cliente/listar-cliente',
+    path: 'listar-cliente',
     component: ListarClienteComponent
   },
   {
-    path: 'cliente/eliminar-cliente',
+    path: 'eliminar-cliente',
     component: EliminarClienteComponent
   },
   //Informacion Financiera Cliente
   {
-    path: 'informacionfinanciera/crear-informacionfinanciera',
+    path: 'crear-informacionfinanciera',
     component: CrearInformacionFinancieraClienteComponent
   },
   {
-    path: 'informacionfinanciera/editar-informacionfinanciera',
+    path: 'editar-informacionfinanciera',
     component: EditarInformacionFinancieraClienteComponent
   },
   {
-    path: 'informacionfinanciera/listar-informacionfinanciera',
+    path: 'listar-informacionfinanciera',
     component: ListarInformacionFinancieraClienteComponent
   },
   {
-    path: 'informacionfinanciera/eliminar-informacionfinanciera',
+    path: 'eliminar-informacionfinanciera',
     component: EliminarInformacionFinancieraClienteComponent
   },
   //Pago del Cliente
   {
-    path: 'pago/crear-pago',
+    path: 'crear-pago',
     component: CrearPagoDelClienteComponent
   },
   {
-    path: 'pago/editar-pago',
+    path: 'editar-pago',
     component: EditarPagoDelClienteComponent
   },
   {
-    path: 'pago/listar-pago',
+    path: 'listar-pago',
     component: ListarPagoDelClienteComponent
   },
   {
-    path: 'pago/eliminar-pago',
+    path: 'eliminar-pago',
     component: EliminarPagoDelClienteComponent
   },
   //Solicitud Estudio Inmueble
   {
-    path: 'solicitudestudio/crear-solicitudestudio',
+    path: 'crear-solicitudestudio',
     component: CrearSolicitudEstudioComponent
   },
   {
-    path: 'solicitudestudio/editar-solicitudestudio',
+    path: 'editar-solicitudestudio',
     component: EditarSolicitudEstudioComponent
   },
   {
-    path: 'solicitudestudio/listar-solicitudestudio',
+    path: 'listar-solicitudestudio',
     component: ListarSolicitudEstudioComponent
   },
   {
-    path: 'solicitudestudio/eliminar-solicitudestudio',
+    path: 'eliminar-solicitudestudio',
     component: EliminarSolicitudEstudioComponent
   }
 ];

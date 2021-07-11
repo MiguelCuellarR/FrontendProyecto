@@ -1,21 +1,29 @@
 <nav>
-    <div class="nav-wrapper">
-      <a routerLink="/" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li *ngIf="isLoggedIn"><a href="sass.html">Sass</a></li>
-        <li *ngIf="isLoggedIn"><a href="badges.html">Components</a></li>
-        <li *ngIf="isLoggedIn"><a href="collapsible.html">Javascript</a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
-        <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo">Logo</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="isLoggedIn"><a routerLink="usuario/listar-usuario">Usuario</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-pais">País</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-ciudad">Ciudad</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-proyecto">Proyecto</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-bloque">Bloque</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-inmueble">Inmueble</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li *ngIf="isLoggedIn"><a href="sass.html">Sass</a></li>
-    <li *ngIf="isLoggedIn"><a href="badges.html">Components</a></li>
-    <li *ngIf="isLoggedIn"><a href="collapsible.html">Javascript</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
-    <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
-  </ul>
+<ul class="sidenav" id="mobile-demo">
+  <li *ngIf="isLoggedIn"><a routerLink="usuario/listar-usuario">Usuario</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-pais">País</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-ciudad">Ciudad</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-proyecto">Proyecto</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-bloque">Bloque</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-inmueble">Inmueble</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
+  <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
+  <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
+</ul>

@@ -14,55 +14,64 @@ export class SeguridadService {
   urlb: String = DatosGenerales.urlBackend;
   constructor(private http: HttpClient) {
     this.verificarSesion();
+  }
 
-   }
-   verificarSesion(){
-     let datos = localStorage.getItem("session-data");
-     if(datos){
-       let datosEnObjeto: UsuarioModelo = JSON.parse(datos);
-       datosEnObjeto.isLoggedIn = true;
-       this.RefrescarDatosSesion(datosEnObjeto);  
-     }
-   }
+  verificarSesion() {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let datosEnObjeto: UsuarioModelo = JSON.parse(datos);
+      datosEnObjeto.isLoggedIn = true;
+      this.RefrescarDatosSesion(datosEnObjeto);
+    }
+  }
 
   identificarUsuario(usuario: UsuarioModelo): Observable<any> {
 
-    return this.http.post<any>(`${this.urlb}/identificar-usuario`, 
-    {
-      nombre_usuario: usuario.correo_electronico,
-      clave: usuario.contrasena
-    }, 
-    {
-      headers: new HttpHeaders({})
-    });
+    return this.http.post<any>(`${this.urlb}/identificar-usuario`,
+      {
+        nombre_usuario: usuario.correo_electronico,
+        clave: usuario.contrasena
+      },
+      {
+        headers: new HttpHeaders({})
+      });
   }
 
-  RefrescarDatosSesion(usuarioModelo: UsuarioModelo){
+  RefrescarDatosSesion(usuarioModelo: UsuarioModelo) {
     this.datosDeSesion.next(usuarioModelo);
   }
 
-  ObtenerDatosSesion(){
+  ObtenerDatosSesion() {
     return this.datosDeSesion.asObservable();
   }
 
-  AlmacenarDatosSesionEnLocal(usuarioModelo : UsuarioModelo){
+  AlmacenarDatosSesionEnLocal(usuarioModelo: UsuarioModelo) {
     let datos = localStorage.getItem("session-data");
-    if (datos){
+    if (datos) {
       return false;
-    }else {
+    } else {
       let datosString = JSON.stringify(usuarioModelo);
       localStorage.setItem("session-data", datosString);
-      usuarioModelo.isLoggedIn=true;
+      usuarioModelo.isLoggedIn = true;
       this.RefrescarDatosSesion(usuarioModelo);
       return true;
     }
   }
 
-  RemoverLocalStorage(){
+  RemoverLocalStorage() {
     let datos = localStorage.removeItem("session-data");
     this.RefrescarDatosSesion(new UsuarioModelo());
   }
 
+  ObtenerTk(){
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj: UsuarioModelo = JSON.parse(datos);
+      return obj.token;
+    } else {
+      return "";
+    }
+  }
 
 }
 

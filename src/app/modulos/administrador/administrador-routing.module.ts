@@ -24,87 +24,87 @@ import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proye
 const routes: Routes = [
   //Pais
   {
-    path: 'pais/crear-pais',
+    path: 'crear-pais',
     component: CrearPaisComponent
   },
   {
-    path: 'pais/editar-pais',
+    path: 'editar-pais',
     component: EditarPaisComponent
   },
   {
-    path: 'pais/listar-pais',
+    path: 'listar-pais',
     component: ListarPaisComponent
   },
   {
-    path: 'pais/eliminar-pais',
+    path: 'eliminar-pais',
     component: EliminarPaisComponent
   },
   //Ciudad
   {
-    path: 'ciudad/crear-ciudad',
+    path: 'crear-ciudad',
     component: CrearCiudadComponent
   },
   {
-    path: 'ciudad/editar-ciudad',
+    path: 'editar-ciudad',
     component: EditarCiudadComponent
   },
   {
-    path: 'ciudad/listar-ciudad',
+    path: 'listar-ciudad',
     component: ListarCiudadComponent
   },
   {
-    path: 'ciudad/eliminar-ciudad',
+    path: 'eliminar-ciudad',
     component: EliminarCiudadComponent
   },
   //Proyecto
   {
-    path: 'proyecto/crear-proyecto',
+    path: 'crear-proyecto',
     component: CrearProyectoComponent
   },
   {
-    path: 'proyecto/editar-proyecto',
+    path: 'editar-proyecto',
     component: EditarProyectoComponent
   },
   {
-    path: 'proyecto/listar-proyecto',
+    path: 'listar-proyecto',
     component: ListarProyectoComponent
   },
   {
-    path: 'proyecto/eliminar-proyecto',
+    path: 'eliminar-proyecto',
     component: EliminarProyectoComponent
   },
   //Bloque
   {
-    path: 'bloque/crear-bloque',
+    path: 'crear-bloque',
     component: CrearBloqueComponent
   },
   {
-    path: 'bloque/editar-bloque',
+    path: 'editar-bloque',
     component: EditarBloqueComponent
   },
   {
-    path: 'bloque/listar-bloque',
+    path: 'listar-bloque',
     component: ListarBloqueComponent
   },
   {
-    path: 'bloque/eliminar-bloque',
+    path: 'eliminar-bloque',
     component: EliminarBloqueComponent
   },
   //Inmueble
   {
-    path: 'inmueble/crear-inmueble',
+    path: 'crear-inmueble',
     component: CrearInmuebleComponent
   },
   {
-    path: 'inmueble/editar-inmueble',
+    path: 'editar-inmueble',
     component: EditarInmuebleComponent
   },
   {
-    path: 'inmueble/listar-inmueble',
+    path: 'listar-inmueble',
     component: ListarInmuebleComponent
   },
   {
-    path: 'inmueble/eliminar-inmueble',
+    path: 'eliminar-inmueble',
     component: EliminarInmuebleComponent
   }
 ];
