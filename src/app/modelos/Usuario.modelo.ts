@@ -9,6 +9,7 @@ export class UsuarioModelo {
     correo_electronico?: String;
     telefono_celular?: String;
     contrasena?: String;
+    rolUsuarioId?: String;
     user?: UsuarioModule;
     token?: String;
     isLoggedIn: Boolean = false;

@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
-import { PaisModelo } from '../modelos/pais.modelo';
+import { BloqueModelo } from '../modelos/bloque.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PaisService {
+export class BloqueService {
 
   urlb: String = DatosGenerales.urlBackend;
   token?: String = "";
@@ -18,20 +18,22 @@ export class PaisService {
     this.token = this.servicioSeguridad.ObtenerTk();
   }
 
-  ListarRegistros(): Observable<PaisModelo[]>{
-    return this.http.get<PaisModelo[]>(`${this.urlb}/paises`);
+  ListarRegistros(): Observable<BloqueModelo[]>{
+    return this.http.get<BloqueModelo[]>(`${this.urlb}/bloques`);
   }
 
-  BuscarRegistro(id: String): Observable<PaisModelo[]>{
-    return this.http.get<PaisModelo[]>(`${this.urlb}/paises/${id}`);
+  BuscarRegistro(id: String): Observable<BloqueModelo[]>{
+    return this.http.get<BloqueModelo[]>(`${this.urlb}/bloques/${id}`);
   }
 
-  AlmacenarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
-    return this.http.post<PaisModelo>(`${this.urlb}/paises`,
+  AlmacenarRegistro(modelo: BloqueModelo): Observable<BloqueModelo> {
+    return this.http.post<BloqueModelo>(`${this.urlb}/bloques`,
       {
         id: modelo.id,
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        descripcion: modelo.descripcion,
+        proyectoId: modelo.proyectoId
       },
       {
         headers: new HttpHeaders({
@@ -40,12 +42,14 @@ export class PaisService {
       });
   }
 
-  ModificarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
-    return this.http.put<PaisModelo>(`${this.urlb}/paises/${modelo.id}`,
+  ModificarRegistro(modelo: BloqueModelo): Observable<BloqueModelo> {
+    return this.http.put<BloqueModelo>(`${this.urlb}/bloques/${modelo.id}`,
       {
         id: modelo.id,
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        descripcion: modelo.descripcion,
+        proyectoId: modelo.proyectoId
       },
       {
         headers: new HttpHeaders({
@@ -54,8 +58,8 @@ export class PaisService {
       });
   }
 
-  EliminarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
-    return this.http.delete<PaisModelo>(`${this.urlb}/paises/${modelo.id}`,
+  EliminarRegistro(modelo: BloqueModelo): Observable<BloqueModelo> {
+    return this.http.delete<BloqueModelo>(`${this.urlb}/bloques/${modelo.id}`,
       {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`

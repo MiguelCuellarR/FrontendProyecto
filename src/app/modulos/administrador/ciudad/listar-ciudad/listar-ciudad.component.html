@@ -1,1 +1,40 @@
-<p>listar-ciudad works!</p>
+<br />
+<a class="waves-effect waves-light btn" routerLink="/administrador/crear-ciudad"><i class="material-icons left">add</i>Agregar</a>
+
+<table class="table responsive-table">
+
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Pais</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let r of listaRegitros | paginate: { itemsPerPage: 6, currentPage: pagina }">
+            <th>
+                {{r.codigo}}
+            </th>
+            <th>
+                {{r.nombre}}
+            </th>
+            <th>
+                {{r.paisId}}
+            </th>
+            <th>
+                <a class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Modificar</a>
+                &nbsp;&nbsp;
+                <button class="btn waves-effect waves-light" type="submit" name="action">Eliminar
+                    <i class="material-icons right">delete</i>
+                </button>
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<pagination-controls  (pageChange)="CambioPagina($event)"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente">
+</pagination-controls>

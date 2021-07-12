@@ -6,6 +6,7 @@ import { ListarUsuarioComponent } from './listar-usuario/listar-usuario.componen
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.co
   ],
   imports: [
     CommonModule,
-    UsuarioRoutingModule
+    UsuarioRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class UsuarioModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteModelo } from 'src/app/modelos/cliente.modelo';
+import { ClienteService } from 'src/app/servicios/cliente.service';
 
 @Component({
   selector: 'app-listar-cliente',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarClienteComponent implements OnInit {
 
-  constructor() { }
+  listaRegitros: ClienteModelo[] = [];
+  pagina: number = 1;
+
+  constructor(private servicio: ClienteService) { }
 
   ngOnInit(): void {
+    this.ObtenerListadoClientes();
+  }
+
+  ObtenerListadoClientes() {
+    this.servicio.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaRegitros = datos;
+      },
+      (error) => {
+        alert("Error cargando el listado de registros")
+      }
+    )
+  }
+
+  CambioPagina(pag: number){
+    this.pagina = pag;
   }
 
 }

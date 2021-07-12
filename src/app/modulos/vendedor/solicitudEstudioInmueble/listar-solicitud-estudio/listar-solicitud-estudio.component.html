@@ -1,1 +1,51 @@
-<p>listar-solicitud-estudio works!</p>
+<br />
+<a class="waves-effect waves-light btn" routerLink="/vendedor/crear-solicitudestudio"><i class="material-icons left">add</i>Agregar</a>
+
+<table class="table responsive-table">
+
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Oferta</th>
+            <th>Inmueble</th>
+            <th>Cliente</th>
+            <th>Estado</th>
+            <th>Vendedor</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let r of listaRegitros | paginate: { itemsPerPage: 6, currentPage: pagina }">
+            <th>
+                {{r.fecha}}
+            </th>
+            <th>
+                {{r.oferta_economica}}
+            </th>
+            <th>
+                {{r.inmuebleId}}
+            </th>
+            <th>
+                {{r.clienteId}}
+            </th>
+            <th>
+                {{r.estadoId}}
+            </th>
+            <th>
+                {{r.usuarioId}}
+            </th>
+            <th>
+                <a class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Modificar</a>
+                &nbsp;&nbsp;
+                <button class="btn waves-effect waves-light" type="submit" name="action">Eliminar
+                    <i class="material-icons right">delete</i>
+                </button>
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<pagination-controls  (pageChange)="CambioPagina($event)"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente">
+</pagination-controls>

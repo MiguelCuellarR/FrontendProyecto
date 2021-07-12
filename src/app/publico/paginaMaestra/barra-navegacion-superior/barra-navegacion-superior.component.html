@@ -9,6 +9,10 @@
       <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-proyecto">Proyecto</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-bloque">Bloque</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-inmueble">Inmueble</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-cliente">Cliente</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-informacionfinanciera">Informacion Financiera</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-pago">Pago</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-solicitudestudio">Solicitud Estudio</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
     </ul>
@@ -22,8 +26,10 @@
   <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-proyecto">Proyecto</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-bloque">Bloque</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="administrador/listar-inmueble">Inmueble</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
-  <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-cliente">Cliente</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-informacionfinanciera">Informacion Financiera</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-pago">Pago</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="vendedor/listar-solicitudestudio">Solicitud Estudio</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesion</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
 </ul>

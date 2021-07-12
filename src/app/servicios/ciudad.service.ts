@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
-import { PaisModelo } from '../modelos/pais.modelo';
+import { CiudadModelo } from '../modelos/ciudad.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PaisService {
+export class CiudadService {
 
   urlb: String = DatosGenerales.urlBackend;
   token?: String = "";
@@ -16,22 +16,24 @@ export class PaisService {
   constructor(private http: HttpClient,
               private servicioSeguridad: SeguridadService) {
     this.token = this.servicioSeguridad.ObtenerTk();
+  }  
+
+  ListarRegistros(): Observable<CiudadModelo[]>{
+    return this.http.get<CiudadModelo[]>(`${this.urlb}/ciudades`);
   }
 
-  ListarRegistros(): Observable<PaisModelo[]>{
-    return this.http.get<PaisModelo[]>(`${this.urlb}/paises`);
+  BuscarRegistros(id: String): Observable<CiudadModelo[]>{
+    return this.http.get<CiudadModelo[]>(`${this.urlb}/ciudades/${id}`);
   }
 
-  BuscarRegistro(id: String): Observable<PaisModelo[]>{
-    return this.http.get<PaisModelo[]>(`${this.urlb}/paises/${id}`);
-  }
+  AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
 
-  AlmacenarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
-    return this.http.post<PaisModelo>(`${this.urlb}/paises`,
+    return this.http.post<CiudadModelo>(`${this.urlb}/ciudades`,
       {
         id: modelo.id,
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        paisId: modelo.paisId
       },
       {
         headers: new HttpHeaders({
@@ -40,12 +42,14 @@ export class PaisService {
       });
   }
 
-  ModificarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
-    return this.http.put<PaisModelo>(`${this.urlb}/paises/${modelo.id}`,
+  ModificarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
+
+    return this.http.put<CiudadModelo>(`${this.urlb}/ciudades/${modelo.id}`,
       {
         id: modelo.id,
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        paisId: modelo.paisId
       },
       {
         headers: new HttpHeaders({
@@ -54,8 +58,8 @@ export class PaisService {
       });
   }
 
-  EliminarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
-    return this.http.delete<PaisModelo>(`${this.urlb}/paises/${modelo.id}`,
+  EliminarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
+    return this.http.delete<CiudadModelo>(`${this.urlb}/ciudades/${modelo.id}`,
       {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`
