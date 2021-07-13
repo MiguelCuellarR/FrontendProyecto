@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaisModelo } from 'src/app/modelos/pais.modelo';
+import { PaisService } from 'src/app/servicios/pais.service';
+import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
 @Component({
   selector: 'app-crear-pais',
@@ -10,7 +12,9 @@ import { PaisModelo } from 'src/app/modelos/pais.modelo';
 export class CrearPaisComponent implements OnInit {
   fgValidacion: FormGroup = this.fb.group({});
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private servicio: PaisService,
+    private seguridad: SeguridadService) { }
 
   construirFormulario() {
     this.fgValidacion = this.fb.group({
@@ -26,6 +30,20 @@ export class CrearPaisComponent implements OnInit {
     let model = new PaisModelo();
     model.nombre = nombre;
     model.codigo = codigo;
+
+    this.servicio.AlmacenarRegistro(model).subscribe(
+
+      (datos) => {
+
+        alert("pais almacenado")
+
+      },
+      (error: any) => {
+        alert("no se almaceno")
+
+      }
+
+    );
 
   }
 

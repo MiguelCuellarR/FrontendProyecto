@@ -16,36 +16,38 @@ export class UsuarioService {
   token?: String = "";
 
   constructor(private http: HttpClient,
-              private servicioSeguridad: SeguridadService) {
+    private servicioSeguridad: SeguridadService) {
     this.token = this.servicioSeguridad.ObtenerTk();
   }
 
-  ListarRegistros(): Observable<UsuarioModelo[]>{
+  ListarRegistros(): Observable<UsuarioModelo[]> {
     return this.http.get<UsuarioModelo[]>(`${this.urlb}/usuarios`,
-    {
+    /*{
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })
-    });
+    }*/);
   }
 
-  ListarRoles(): Observable<RolModelo[]>{
+
+
+  BuscarRegistro(id: String): Observable<UsuarioModelo[]> {
+    return this.http.get<UsuarioModelo[]>(`${this.urlb}/usuarios/${id}`  /*,
+      {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
+        })
+      }*/);
+  }
+
+
+  ListarRoles(): Observable<RolModelo[]> {
     return this.http.get<RolModelo[]>(`${this.urlb}/roles-usuarios`,
-    {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
-      })
-    });
-  }
-
-
-  BuscarRegistro(id: String): Observable<UsuarioModelo[]>{
-    return this.http.get<UsuarioModelo[]>(`${this.urlb}/usuarios/${id}`,
-    {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
-      })
-    });
+      {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
+        })
+      });
   }
 
   AlmacenarRegistro(modelo: UsuarioModelo): Observable<UsuarioModelo> {
@@ -90,7 +92,7 @@ export class UsuarioService {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`
         })
-        
+
       });
   }
 }

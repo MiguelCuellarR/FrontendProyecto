@@ -14,22 +14,24 @@ export class PaisService {
   token?: String = "";
 
   constructor(private http: HttpClient,
-              private servicioSeguridad: SeguridadService) {
+    private servicioSeguridad: SeguridadService) {
     this.token = this.servicioSeguridad.ObtenerTk();
   }
 
-  ListarRegistros(): Observable<PaisModelo[]>{
+  ListarRegistros(): Observable<PaisModelo[]> {
     return this.http.get<PaisModelo[]>(`${this.urlb}/paises`);
   }
 
-  BuscarRegistro(id: String): Observable<PaisModelo[]>{
+  BuscarRegistro(id: String): Observable<PaisModelo[]> {
     return this.http.get<PaisModelo[]>(`${this.urlb}/paises/${id}`);
   }
 
   AlmacenarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
+
+    console.log("Su toke es" + this.token)
     return this.http.post<PaisModelo>(`${this.urlb}/paises`,
       {
-        id: modelo.id,
+        id:modelo.id,
         codigo: modelo.codigo,
         nombre: modelo.nombre
       },
@@ -60,7 +62,7 @@ export class PaisService {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`
         })
-        
+
       });
   }
 }
