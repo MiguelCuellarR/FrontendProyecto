@@ -23,6 +23,7 @@ import { CrearInmuebleComponent } from './inmueble/crear-inmueble/crear-inmueble
 import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmueble.component';
 import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar-inmueble.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -51,7 +52,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     AdministradorRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AdministradorModule { }

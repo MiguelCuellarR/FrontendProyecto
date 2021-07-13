@@ -22,6 +22,7 @@ export class ListarClienteComponent implements OnInit {
     this.servicio.ListarRegistros().subscribe(
       (datos) => {
         this.listaRegitros = datos;
+        console.log(this.listaRegitros)
       },
       (error) => {
         alert("Error cargando el listado de registros")

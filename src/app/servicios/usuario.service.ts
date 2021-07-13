@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
+import { RolModelo } from '../modelos/rol.modelo';
 import { UsuarioModelo } from '../modelos/Usuario.modelo';
 
 import { SeguridadService } from './seguridad.service';
@@ -27,6 +28,16 @@ export class UsuarioService {
       })
     });
   }
+
+  ListarRoles(): Observable<RolModelo[]>{
+    return this.http.get<RolModelo[]>(`${this.urlb}/roles-usuarios`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
 
   BuscarRegistro(id: String): Observable<UsuarioModelo[]>{
     return this.http.get<UsuarioModelo[]>(`${this.urlb}/usuarios/${id}`,
