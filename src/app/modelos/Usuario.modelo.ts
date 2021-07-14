@@ -10,6 +10,7 @@ export class UsuarioModelo {
     telefono_celular?: String;
     contrasena?: String;
     rolUsuarioId?: String;
+    ciudadId?:String;
     user?: UsuarioModule;
     token?: String;
     isLoggedIn: Boolean = false;

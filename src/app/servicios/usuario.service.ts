@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { mode } from 'crypto-js';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
+import { CiudadModelo } from '../modelos/ciudad.modelo';
 import { RolModelo } from '../modelos/rol.modelo';
 import { UsuarioModelo } from '../modelos/Usuario.modelo';
 
@@ -50,16 +52,20 @@ export class UsuarioService {
       });
   }
 
+
+  
+
   AlmacenarRegistro(modelo: UsuarioModelo): Observable<UsuarioModelo> {
     return this.http.post<UsuarioModelo>(`${this.urlb}/usuarios`,
       {
-        id: modelo.id,
+        
         nombres: modelo.nombres,
         apellidos: modelo.apellidos,
         documento: modelo.documento,
         correo_electronico: modelo.correo_electronico,
-        tel_celular: modelo.telefono_celular,
-        rol: modelo.rolUsuarioId
+        telefono_celular: modelo.telefono_celular,
+        rolUsuarioId: modelo.rolUsuarioId,
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
@@ -77,7 +83,9 @@ export class UsuarioService {
         documento: modelo.documento,
         correo_electronico: modelo.correo_electronico,
         telefono_celular: modelo.telefono_celular,
-        rol: modelo.rolUsuarioId
+        rol: modelo.rolUsuarioId,
+        ciudad: modelo.ciudadId
+        
       },
       {
         headers: new HttpHeaders({

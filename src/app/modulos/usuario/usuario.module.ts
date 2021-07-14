@@ -7,6 +7,7 @@ import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     UsuarioRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule, FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UsuarioModule { }

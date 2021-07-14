@@ -63,6 +63,8 @@ export class SeguridadService {
     this.RefrescarDatosSesion(new UsuarioModelo());
   }
 
+
+  /*
   ObtenerTk(){
     let datos = localStorage.getItem("session-data");
     if (datos) {
@@ -72,7 +74,18 @@ export class SeguridadService {
       return "";
     }
   }
-  
+  */
+
+
+  ObtenerTk() {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj = JSON.parse(datos);
+      return obj.tk;
+    } else {
+      return "";
+    }
+  }
 
 }
 
