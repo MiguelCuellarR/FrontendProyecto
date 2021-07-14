@@ -1,1 +1,20 @@
-<p>cambiar-contrasenia works!</p>
+<form class="col s12" [formGroup]="fgValidador">
+
+
+
+    <div class="input-field col s6">
+        <i class="material-icons prefix">email</i>
+        <input formControlName="correo" id="correo" type="email" class="validate">
+        <label for="correo">Correo Electronico</label>
+    </div>
+
+    <div class="row center-align" >
+        <button class="btn waves-effect waves-light" type="button"  (click)="nuevaContrasena()"  name="action">Reenviar contraseña
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+
+
+
+
+</form>

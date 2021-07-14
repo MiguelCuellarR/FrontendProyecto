@@ -1,4 +1,4 @@
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioModelo } from 'src/app/modelos/Usuario.modelo';
 import * as crypto from 'crypto-js';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
-  
+
   fgValidador: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder,
@@ -33,6 +33,13 @@ export class IniciarSesionComponent implements OnInit {
   get ObtenerFgvalidador() {
     return this.fgValidador.controls;
   }
+
+  nuevaContrasena() {
+
+    this.router.navigate(["/seguridad/cambiar-contrasenia"])
+
+  }
+
 
   IdentificarUsuario() {
     if (this.fgValidador.invalid) {

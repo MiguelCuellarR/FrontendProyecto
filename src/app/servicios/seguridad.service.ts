@@ -16,6 +16,8 @@ export class SeguridadService {
     this.verificarSesion();
   }
 
+
+
   verificarSesion() {
     let datos = localStorage.getItem("session-data");
     if (datos) {
@@ -24,6 +26,21 @@ export class SeguridadService {
       this.RefrescarDatosSesion(datosEnObjeto);
     }
   }
+
+
+  reenviarContraseña(correo?: String): Observable<any> {
+
+    return this.http.post<any>(`${this.urlb}/reset-password`,
+      {
+        correo: correo
+
+      },
+      {
+        headers: new HttpHeaders({})
+      });
+  }
+
+
 
   identificarUsuario(usuario: UsuarioModelo): Observable<any> {
 
