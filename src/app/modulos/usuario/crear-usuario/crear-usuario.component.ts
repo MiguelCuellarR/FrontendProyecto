@@ -67,9 +67,7 @@ export class CrearUsuarioComponent implements OnInit {
       modelo.rolUsuarioId = rol;
       modelo.ciudadId = ciudad;
 
-      console.log(modelo);
-      alert(modelo.ciudadId
-      )
+    
       /*modelo.apellidos
               modelo.documento
               modelo.correo_electronico
