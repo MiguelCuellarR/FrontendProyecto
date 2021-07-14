@@ -8,18 +8,44 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./listar-usuario.component.css']
 })
 export class ListarUsuarioComponent implements OnInit {
-  
+
   listaRegitros: UsuarioModelo[] = [];
   pagina: number = 1;
 
-  constructor(private servicio: UsuarioService) { }
+  constructor(private servicioUsuario: UsuarioService) { }
 
   ngOnInit(): void {
     this.ObtenerListadoUsuarios();
   }
 
+
+  verificarEliminacion(id?: String, nombre?: String) {
+
+    if (window.confirm("Eliminar el registro de " + nombre + " ?")) {
+
+      let modelo = new UsuarioModelo();
+      modelo.id = id;
+      modelo.nombres = nombre;
+
+      this.servicioUsuario.EliminarRegistro(modelo).subscribe(
+
+        (datos) => {
+
+          alert("El registro de "+nombre+" Fue eliminado")
+          this.listaRegitros= this.listaRegitros.filter(x=> x.id != id)
+         }, (error) => {
+          alert("Error Eliminando le registro")
+        }
+
+      )
+
+    }
+
+  }
+
+
   ObtenerListadoUsuarios() {
-    this.servicio.ListarRegistros().subscribe(
+    this.servicioUsuario.ListarRegistros().subscribe(
       (datos) => {
         this.listaRegitros = datos;
       },
@@ -29,7 +55,7 @@ export class ListarUsuarioComponent implements OnInit {
     )
   }
 
-  CambioPagina(pag: number){
+  CambioPagina(pag: number) {
     this.pagina = pag;
   }
 

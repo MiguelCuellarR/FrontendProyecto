@@ -29,6 +29,31 @@ export class ListarPaisComponent implements OnInit {
     )
   }
 
+
+  verificarEliminacion(id?: String, nombre?: String) {
+
+    if (window.confirm("Eliminar el registro de " + nombre + " ?")) {
+
+      let modelo = new PaisModelo();
+      modelo.id = id;
+      modelo.nombre = nombre;
+
+      this.servicio.EliminarRegistro(modelo).subscribe(
+
+        (datos) => {
+
+          alert("El registro de "+nombre+" Fue eliminado")
+          this.listaRegitros= this.listaRegitros.filter(x=> x.id != id)
+         }, (error) => {
+          alert("Error Eliminando le registro")
+        }
+
+      )
+
+    }
+
+  }
+
   CambioPagina(pag: number){
     this.pagina = pag;
   }

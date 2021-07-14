@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { mode } from 'crypto-js';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { RolModelo } from 'src/app/modelos/rol.modelo';
@@ -20,7 +21,8 @@ export class CrearUsuarioComponent implements OnInit {
   fgValidador: FormGroup = this.fb.group({});
   listaRoles: RolModelo[] = [];
   listaCiudades: CiudadModelo[] = [];
-  constructor(private fb: FormBuilder, private servicio: UsuarioService, private servicioCiudades: CiudadService) { }
+  constructor(private fb: FormBuilder, private servicio: UsuarioService, private servicioCiudades: CiudadService
+    ,private router: Router) { }
 
 
   ngOnInit(): void {
@@ -67,18 +69,11 @@ export class CrearUsuarioComponent implements OnInit {
       modelo.rolUsuarioId = rol;
       modelo.ciudadId = ciudad;
 
-    
-      /*modelo.apellidos
-              modelo.documento
-              modelo.correo_electronico
-              modelo.telefono_celular
-              modelo.rolUsuarioId
-              modelo.ciudadId*/
 
       this.servicio.AlmacenarRegistro(modelo).subscribe(
         (data: UsuarioModelo) => {
           alert("Datos Correctos")
-          // this.router.navigate(["/inicio"]);
+          this.router.navigate(["/usuario/listar-usuario"]);
 
         },
         (error: any) => {
