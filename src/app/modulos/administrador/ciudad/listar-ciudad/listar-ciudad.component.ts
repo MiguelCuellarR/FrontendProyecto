@@ -18,6 +18,33 @@ export class ListarCiudadComponent implements OnInit {
     this.ObtenerListadoCiudades();
   }
 
+
+
+  verificarEliminacion(id?: String, nombre?: String) {
+
+    if (window.confirm("Eliminar el registro de " + nombre + " ?")) {
+
+      let modelo = new CiudadModelo();
+      modelo.id = id;
+      modelo.nombre = nombre;
+
+      this.servicio.EliminarRegistro(modelo).subscribe(
+
+        (datos) => {
+
+          alert("El registro de "+nombre+" Fue eliminado")
+          this.listaRegitros= this.listaRegitros.filter(x=> x.id != id)
+         }, (error) => {
+          alert("Error Eliminando le registro")
+        }
+
+      )
+
+    }
+
+  }
+
+
   ObtenerListadoCiudades() {
     this.servicio.ListarRegistros().subscribe(
       (datos) => {
