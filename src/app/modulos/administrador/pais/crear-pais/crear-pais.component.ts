@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { PaisService } from 'src/app/servicios/pais.service';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-pais',
   templateUrl: './crear-pais.component.html',
@@ -14,7 +14,8 @@ export class CrearPaisComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private servicio: PaisService,
-    private seguridad: SeguridadService) { }
+    private seguridad: SeguridadService,
+    private router: Router) { }
 
   construirFormulario() {
     this.fgValidacion = this.fb.group({
@@ -36,6 +37,7 @@ export class CrearPaisComponent implements OnInit {
       (datos) => {
 
         alert("pais almacenado")
+        this.router.navigate(["/administrador/listar-pais"]);
 
       },
       (error: any) => {

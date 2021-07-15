@@ -28,7 +28,6 @@ export class PaisService {
 
   AlmacenarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
 
-    console.log("Su toke es" + this.token)
     return this.http.post<PaisModelo>(`${this.urlb}/paises`,
       {
         id:modelo.id,
@@ -65,4 +64,7 @@ export class PaisService {
 
       });
   }
+
+
+
 }

@@ -2,7 +2,7 @@
     <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="EnviarPais()">
         <div class="row">
             <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
+                <i class="material-icons prefix">edit</i>
                 <input formControlName="nombre" id="nombre" type="text" class="validate">
                 <label for="nombre">Nombre</label>
                 <div *ngIf="obtenerFGV.nombre.errors && (obtenerFGV.nombre.dirty || obtenerFGV.nombre.touched)"

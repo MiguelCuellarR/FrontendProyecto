@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { mode } from 'crypto-js';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { RolModelo } from 'src/app/modelos/rol.modelo';
 import { UsuarioModelo } from 'src/app/modelos/Usuario.modelo';
@@ -96,7 +95,6 @@ export class CrearUsuarioComponent implements OnInit {
     this.servicio.ListarRoles().subscribe(
       (datos) => {
         this.listaRoles = datos;
-        console.log(this.listaRoles);
         setTimeout(() => {
           InicializarSelect();
         }, 500);
@@ -113,7 +111,6 @@ export class CrearUsuarioComponent implements OnInit {
     this.servicioCiudades.ListarRegistros().subscribe(
       (datos) => {
         this.listaCiudades = datos;
-        console.log(this.listaCiudades);
         setTimeout(() => {
           InicializarSelect();
         }, 500);
