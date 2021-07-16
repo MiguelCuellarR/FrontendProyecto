@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioModelo } from 'src/app/modelos/Usuario.modelo';
 import * as crypto from 'crypto-js';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import { Router } from '@angular/router';
+
+export interface FormModel {
+  captcha?: string;
+}
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -12,18 +16,21 @@ import { Router } from '@angular/router';
 })
 export class IniciarSesionComponent implements OnInit {
 
+  public resolved(captchaResponse: string): void {} 
+
   fgValidador: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   construirFormulario() {
     this.fgValidador = this.fb.group({
       correo: ['miguel.1701823659@ucaldas.edu.co', [Validators.required, Validators.email]],
-      clave: ['98765', [Validators.required]]
+      clave: ['98765', [Validators.required]],
+      recaptchaReactive: new FormControl(null, Validators.required)
     });
-
   }
 
   ngOnInit(): void {
@@ -35,11 +42,8 @@ export class IniciarSesionComponent implements OnInit {
   }
 
   nuevaContrasena() {
-
     this.router.navigate(["/seguridad/cambiar-contrasenia"])
-
   }
-
 
   IdentificarUsuario() {
     if (this.fgValidador.invalid) {
@@ -57,15 +61,12 @@ export class IniciarSesionComponent implements OnInit {
           alert("Datos Correctos")
           this.servicioSeguridad.AlmacenarDatosSesionEnLocal(data)
           this.router.navigate(["/inicio"]);
-
         },
         (error: any) => {
           alert("Datos invalidos");
           console.log(error);
         })
     }
-
-
   }
 
 }

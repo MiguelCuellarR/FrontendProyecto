@@ -16,8 +16,6 @@ export class SeguridadService {
     this.verificarSesion();
   }
 
-
-
   verificarSesion() {
     let datos = localStorage.getItem("session-data");
     if (datos) {
@@ -26,7 +24,6 @@ export class SeguridadService {
       this.RefrescarDatosSesion(datosEnObjeto);
     }
   }
-
 
   reenviarContraseña(correo?: String): Observable<any> {
 
@@ -39,8 +36,6 @@ export class SeguridadService {
         headers: new HttpHeaders({})
       });
   }
-
-
 
   identificarUsuario(usuario: UsuarioModelo): Observable<any> {
 
@@ -93,12 +88,21 @@ export class SeguridadService {
   }
   */
 
-
   ObtenerTk() {
     let datos = localStorage.getItem("session-data");
     if (datos) {
       let obj = JSON.parse(datos);
       return obj.tk;
+    } else {
+      return "";
+    }
+  }
+
+  ObtenerRolUsuario(){
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj = JSON.parse(datos);
+      return obj.rolUsuarioId;
     } else {
       return "";
     }

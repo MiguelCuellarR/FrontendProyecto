@@ -7,6 +7,7 @@ import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { CambiarContraseniaComponent } from './cambiar-contrasenia/cambiar-contrasenia.component';
 import { ResetearContraseniaComponent } from './resetear-contrasenia/resetear-contrasenia.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SeguridadRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaFormsModule,
+    RecaptchaModule
   ]
 })
 export class SeguridadModule { }
