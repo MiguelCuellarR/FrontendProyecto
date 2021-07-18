@@ -5,7 +5,7 @@ export class UsuarioModelo {
     id?: String;
     nombres?: String;
     apellidos?: String;
-    documento?: number;
+    documento?: String;
     correo_electronico?: String;
     telefono_celular?: String;
     contrasena?: String;

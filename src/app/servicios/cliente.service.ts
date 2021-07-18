@@ -21,8 +21,8 @@ export class ClienteService {
     return this.http.get<ClienteModelo[]>(`${this.urlb}/clientes`);
   }
 
-  BuscarRegistro(id: String): Observable<ClienteModelo[]> {
-    return this.http.get<ClienteModelo[]>(`${this.urlb}/clientes/${id}`);
+  BuscarRegistro(id: String): Observable<ClienteModelo> {
+    return this.http.get<ClienteModelo>(`${this.urlb}/clientes/${id}`);
   }
 
   AlmacenarRegistro(modelo: ClienteModelo): Observable<ClienteModelo> {

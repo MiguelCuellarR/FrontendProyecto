@@ -22,8 +22,8 @@ export class PaisService {
     return this.http.get<PaisModelo[]>(`${this.urlb}/paises`);
   }
 
-  BuscarRegistro(id: String): Observable<PaisModelo[]> {
-    return this.http.get<PaisModelo[]>(`${this.urlb}/paises/${id}`);
+  BuscarRegistro(id: String): Observable<PaisModelo> {
+    return this.http.get<PaisModelo>(`${this.urlb}/paises/${id}`);
   }
 
   AlmacenarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
@@ -64,7 +64,5 @@ export class PaisService {
 
       });
   }
-
-
-
+  
 }

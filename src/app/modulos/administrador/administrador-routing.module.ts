@@ -28,7 +28,7 @@ const routes: Routes = [
     component: CrearPaisComponent
   },
   {
-    path: 'editar-pais',
+    path: 'editar-pais/:id',
     component: EditarPaisComponent
   },
   {
@@ -45,7 +45,7 @@ const routes: Routes = [
     component: CrearCiudadComponent
   },
   {
-    path: 'editar-ciudad',
+    path: 'editar-ciudad/:id',
     component: EditarCiudadComponent
   },
   {
@@ -62,7 +62,7 @@ const routes: Routes = [
     component: CrearProyectoComponent
   },
   {
-    path: 'editar-proyecto',
+    path: 'editar-proyecto/:id',
     component: EditarProyectoComponent
   },
   {
@@ -79,7 +79,7 @@ const routes: Routes = [
     component: CrearBloqueComponent
   },
   {
-    path: 'editar-bloque',
+    path: 'editar-bloque/:id',
     component: EditarBloqueComponent
   },
   {
@@ -96,7 +96,7 @@ const routes: Routes = [
     component: CrearInmuebleComponent
   },
   {
-    path: 'editar-inmueble',
+    path: 'editar-inmueble/:id',
     component: EditarInmuebleComponent
   },
   {

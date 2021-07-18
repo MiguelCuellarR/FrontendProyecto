@@ -22,8 +22,8 @@ export class BloqueService {
     return this.http.get<BloqueModelo[]>(`${this.urlb}/bloques`);
   }
 
-  BuscarRegistro(id: String): Observable<BloqueModelo[]>{
-    return this.http.get<BloqueModelo[]>(`${this.urlb}/bloques/${id}`);
+  BuscarRegistro(id: String): Observable<BloqueModelo>{
+    return this.http.get<BloqueModelo>(`${this.urlb}/bloques/${id}`);
   }
 
   AlmacenarRegistro(modelo: BloqueModelo): Observable<BloqueModelo> {

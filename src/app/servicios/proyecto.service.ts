@@ -22,8 +22,8 @@ export class ProyectoService {
     return this.http.get<ProyectoModelo[]>(`${this.urlb}/proyectos`);
   }
 
-  BuscarRegistro(id: String): Observable<ProyectoModelo[]>{
-    return this.http.get<ProyectoModelo[]>(`${this.urlb}/proyectos/${id}`);
+  BuscarRegistro(id: String): Observable<ProyectoModelo>{
+    return this.http.get<ProyectoModelo>(`${this.urlb}/proyectos/${id}`);
   }
 
   AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {

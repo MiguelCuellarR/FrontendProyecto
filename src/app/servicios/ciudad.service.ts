@@ -22,8 +22,8 @@ export class CiudadService {
     return this.http.get<CiudadModelo[]>(`${this.urlb}/ciudades`);
   }
 
-  BuscarRegistros(id: String): Observable<CiudadModelo[]>{
-    return this.http.get<CiudadModelo[]>(`${this.urlb}/ciudades/${id}`);
+  BuscarRegistro(id: String): Observable<CiudadModelo>{
+    return this.http.get<CiudadModelo>(`${this.urlb}/ciudades/${id}`);
   }
 
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {

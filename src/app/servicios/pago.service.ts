@@ -22,8 +22,8 @@ export class PagoService {
     return this.http.get<PagoModelo[]>(`${this.urlb}/pagos`);
   }
 
-  BuscarRegistro(id: String): Observable<PagoModelo[]> {
-    return this.http.get<PagoModelo[]>(`${this.urlb}/pagos/${id}`);
+  BuscarRegistro(id: String): Observable<PagoModelo> {
+    return this.http.get<PagoModelo>(`${this.urlb}/pagos/${id}`);
   }
 
   AlmacenarRegistro(modelo: PagoModelo): Observable<PagoModelo> {

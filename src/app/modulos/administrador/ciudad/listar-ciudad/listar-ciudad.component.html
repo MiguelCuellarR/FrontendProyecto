@@ -24,7 +24,7 @@
                 {{r.paisId}}
             </th>
             <th>
-                <a class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Modificar</a>
+                <a class="waves-effect waves-light btn" routerLink="/administrador/editar-ciudad/{{r.id}}"><i class="material-icons left">edit</i>Modificar</a>
                 &nbsp;&nbsp;
                 <button class="btn waves-effect waves-light" type="button"  name="action" (click)="verificarEliminacion(r.id,r.nombre)" >Eliminar
                     <i class="material-icons right">delete</i>

@@ -22,8 +22,8 @@ export class SolicitudEstudioService {
     return this.http.get<SolicitudEstudioModelo[]>(`${this.urlb}/solicitudes-estudios`);
   }
 
-  BuscarRegistro(id: String): Observable<SolicitudEstudioModelo[]> {
-    return this.http.get<SolicitudEstudioModelo[]>(`${this.urlb}/solicitudes-estudios/${id}`);
+  BuscarRegistro(id: String): Observable<SolicitudEstudioModelo> {
+    return this.http.get<SolicitudEstudioModelo>(`${this.urlb}/solicitudes-estudios/${id}`);
   }
 
   AlmacenarRegistro(modelo: SolicitudEstudioModelo): Observable<SolicitudEstudioModelo> {

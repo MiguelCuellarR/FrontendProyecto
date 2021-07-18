@@ -22,8 +22,8 @@ export class InformacionFinancieraService {
     return this.http.get<InformacionFinancieraModelo[]>(`${this.urlb}/infos-financieras`);
   }
 
-  BuscarRegistro(id: String): Observable<InformacionFinancieraModelo[]> {
-    return this.http.get<InformacionFinancieraModelo[]>(`${this.urlb}/infos-financieras/${id}`);
+  BuscarRegistro(id: String): Observable<InformacionFinancieraModelo> {
+    return this.http.get<InformacionFinancieraModelo>(`${this.urlb}/infos-financieras/${id}`);
   }
 
   AlmacenarRegistro(modelo: InformacionFinancieraModelo): Observable<InformacionFinancieraModelo> {

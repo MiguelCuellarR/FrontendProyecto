@@ -16,9 +16,6 @@ declare var InicializarSelect: any;
   styleUrls: ['./crear-ciudad.component.css']
 })
 export class CrearCiudadComponent implements OnInit {
-
-
-
   listaPaises: PaisModelo[] = [];
   fgValidador: FormGroup = this.fb.group({});
   constructor(private servicioPais: PaisService,
