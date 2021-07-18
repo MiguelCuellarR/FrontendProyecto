@@ -34,7 +34,7 @@ export class ProyectoService {
         nombre: modelo.nombre,
         descripcion: modelo.descripcion,
         imagen: modelo.imagen,
-        ciudad: modelo.ciudadId
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
@@ -51,7 +51,7 @@ export class ProyectoService {
         nombre: modelo.nombre,
         descripcion: modelo.descripcion,
         imagen: modelo.imagen,
-        ciudad: modelo.ciudadId
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({

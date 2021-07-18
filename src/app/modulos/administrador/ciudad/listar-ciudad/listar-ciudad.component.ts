@@ -18,8 +18,6 @@ export class ListarCiudadComponent implements OnInit {
     this.ObtenerListadoCiudades();
   }
 
-
-
   verificarEliminacion(id?: String, nombre?: String) {
 
     if (window.confirm("Eliminar el registro de " + nombre + " ?")) {

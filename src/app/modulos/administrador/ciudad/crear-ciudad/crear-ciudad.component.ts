@@ -6,9 +6,7 @@ import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
 import { PaisService } from 'src/app/servicios/pais.service';
 
-
 declare var InicializarSelect: any;
-
 
 @Component({
   selector: 'app-crear-ciudad',
