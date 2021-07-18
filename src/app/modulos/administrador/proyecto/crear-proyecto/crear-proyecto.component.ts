@@ -19,9 +19,9 @@ export class CrearProyectoComponent implements OnInit {
   fgValidador: FormGroup = this.fb.group({});
 
   constructor(private servicioCiudad: CiudadService,
-     private fb: FormBuilder,
-      private servicioProyecto: ProyectoService,
-      private router: Router) { }
+              private fb: FormBuilder,
+              private servicioProyecto: ProyectoService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.LlenarSelect();

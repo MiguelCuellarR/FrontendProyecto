@@ -22,7 +22,6 @@ export class CrearCiudadComponent implements OnInit {
       private router: Router) { }
 
   ngOnInit(): void {
-
     this.LlenarSelectPaises();
     this.construirFormulario();
   }
@@ -36,7 +35,7 @@ export class CrearCiudadComponent implements OnInit {
         }, 500);
       },
       (error) => {
-        alert('Error listando Roles');
+        alert('Error listando Paises');
       }
     );
   }
