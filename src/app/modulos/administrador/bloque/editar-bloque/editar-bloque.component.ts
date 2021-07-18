@@ -28,7 +28,7 @@ export class EditarBloqueComponent implements OnInit {
   ngOnInit(): void {
     this.LlenarSelectProyectos();
     this.construirFormulario();
-    console.log(this.listaProyectos),
+    this.id = this.route.snapshot.params["id"];
     this.servicioBloque.BuscarRegistro(this.id).subscribe(
       (datos) => {
         this.ObtenerFgvalidador.id.setValue(datos.id),

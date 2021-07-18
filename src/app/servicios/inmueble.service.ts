@@ -31,7 +31,6 @@ export class InmuebleService {
       {
         id: modelo.id,
         codigo: modelo.codigo,
-        nombre: modelo.nombre,
         identificador: modelo.identificador,
         valor: modelo.valor,
         bloqueId: modelo.bloqueId
@@ -48,7 +47,6 @@ export class InmuebleService {
       {
         id: modelo.id,
         codigo: modelo.codigo,
-        nombre: modelo.nombre,
         identificador: modelo.identificador,
         valor: modelo.valor,
         bloqueId: modelo.bloqueId

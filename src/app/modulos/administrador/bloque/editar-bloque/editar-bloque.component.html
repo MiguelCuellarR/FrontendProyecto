@@ -23,7 +23,7 @@
 
             <div class="input-field col s6">
                 <i class="material-icons prefix">add_location</i>
-                <select id="proyectos" formControlName="proyecto">
+                <select id="ciudades" formControlName="proyecto">
                     <option value="" disabled selected>Seleccionar Proyecto</option>
 
                     <option value="{{p.id}}" *ngFor="let p of listaProyectos;">{{p.nombre}}</option>
