@@ -23,23 +23,23 @@ export class CrearSolicitudEstudioComponent implements OnInit {
 
   listaClientes: ClienteModelo[] = [];
   listaEstados: EstadoModelo[] = [];
-  usuario: String = "";
+  usuario?: String = "";
   listaInmuebles: InmuebleModelo[] = [];
   fgValidador: FormGroup = this.fb.group({});
 
   constructor(private servicioCliente: ClienteService,
-              private servicioSeguridad: SeguridadService,
-              private servicioInmueble: InmuebleService,
-              private fb: FormBuilder,
-              private servicioSolicitud: SolicitudEstudioService,
-              private router: Router) { }
+    private servicioSeguridad: SeguridadService,
+    private servicioInmueble: InmuebleService,
+    private fb: FormBuilder,
+    private servicioSolicitud: SolicitudEstudioService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.LlenarSelectCliente();
     this.LlenarSelectInmueble();
     this.LlenarSelectEstados();
     this.construirFormulario();
-    this.obtenerUsuario();
+    this.getIdUsuario();
   }
 
   LlenarSelectCliente() {
@@ -58,12 +58,7 @@ export class CrearSolicitudEstudioComponent implements OnInit {
 
   obtenerUsuario() {
     return this.servicioSeguridad.ObtenerDatosSesion().subscribe(
-      (datos) => {
-        this.usuario = `${datos.nombres} ${datos.apellidos}`
-      },
-      (error) => {
-        alert("No se reconocio el usuario")
-      }
+
     )
   }
 
@@ -72,6 +67,7 @@ export class CrearSolicitudEstudioComponent implements OnInit {
       (datos) => {
         this.listaInmuebles = datos;
         setTimeout(() => {
+
           InicializarSelect();
         }, 500);
       },
@@ -84,7 +80,7 @@ export class CrearSolicitudEstudioComponent implements OnInit {
   LlenarSelectEstados() {
     this.servicioSolicitud.ListarEstados().subscribe(
       (datos) => {
-        this.listaInmuebles = datos;
+        this.listaEstados = datos;
         setTimeout(() => {
           InicializarSelect();
         }, 500);
@@ -95,46 +91,52 @@ export class CrearSolicitudEstudioComponent implements OnInit {
     );
   }
 
+  getIdUsuario() {
+
+    this.servicioSeguridad.ObtenerDatosSesion().subscribe(
+
+      (datos) => { this.usuario=datos.id},
+      (error) => {alert("No se identificó el usuario") }
+    );
+
+  }
+
+
   crearRegistro() {
     if (this.fgValidador.invalid) {
       alert("Formulario Invalido")
     } else {
       let fecha = this.ObtenerFgvalidador.fecha.value;
       let oferta = this.ObtenerFgvalidador.oferta.value;
-      let estado = this.ObtenerFgvalidador.estado.value;
       let cliente = this.ObtenerFgvalidador.cliente.value;
       let inmueble = this.ObtenerFgvalidador.inmueble.value;
-      let usuario = this.ObtenerFgvalidador.usuario.value;
 
       let modelo = new SolicitudEstudioModelo();
 
       modelo.fecha = fecha;
-      modelo.oferta_economica = oferta;
-      modelo.estadoId = estado;
+      modelo.oferta_economica = parseInt(oferta);
       modelo.clienteId = cliente;
       modelo.inmuebleId = inmueble;
-      modelo.usuarioId = usuario;
+      modelo.usuarioId = this.usuario
 
-      this.servicioSolicitud.AlmacenarRegistro(modelo).subscribe(
-        (data: SolicitudEstudioModelo) => {
-          alert("Datos Correctos")
-           this.router.navigate(["/vendedor/listar-solicitudestudio"]);
+        this.servicioSolicitud.AlmacenarRegistro(modelo).subscribe(
+          (data: SolicitudEstudioModelo) => {
+            alert("Datos Correctos")
+            this.router.navigate(["/vendedor/listar-solicitudestudio"]);
 
-        },
-        (error: any) => {
-          alert(error.message);
-        })
-      }
+          },
+          (error: any) => {
+            alert(error.message);
+          })
+    }
   }
 
   construirFormulario() {
     this.fgValidador = this.fb.group({
       fecha: ['', [Validators.required]],
       oferta: ['', [Validators.required]],
-      estado: ['', [Validators.required]],
       cliente: ['', [Validators.required]],
-      inmueble: ['', [Validators.required, Validators.email]],
-      usuario: [``, [Validators.required]],
+      inmueble: ['', [Validators.required]]
     });
   }
 

@@ -23,6 +23,8 @@ export class SolicitudEstudioService {
     return this.http.get<SolicitudEstudioModelo[]>(`${this.urlb}/solicitudes-estudios`);
   }
 
+
+
   BuscarRegistro(id: String): Observable<SolicitudEstudioModelo> {
     return this.http.get<SolicitudEstudioModelo>(`${this.urlb}/solicitudes-estudios/${id}`);
   }
@@ -35,7 +37,6 @@ export class SolicitudEstudioService {
         oferta_economica: modelo.oferta_economica,
         inmuebleId: modelo.inmuebleId,
         clienteId: modelo.clienteId,
-        estadoId: modelo.estadoId,
         usuarioId: modelo.usuarioId
       },
       {

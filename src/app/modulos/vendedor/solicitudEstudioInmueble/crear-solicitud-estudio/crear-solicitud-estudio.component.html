@@ -13,26 +13,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">edit</i>
-                <input formControlName="usuario" id="usuario" type="text" xclass="validate">
-                <label class="active" for="usuario">Usuario</label>
-            </div>
-
-            <div class="input-field col s6">
-                <i class="material-icons prefix">add_location</i>
-                <select id="estados" formControlName="estado">
-                    <option value="" disabled selected>Seleccionar Estado</option>
-
-                    <option value="{{e.id}}" *ngFor="let e of listaEstados;">{{e.nombre}}</option>
-
-                </select>
-                <label>Estados</label>
-            </div>
-
-            
-        </div>
 
         <div class="row">
             <div class="input-field col s6">
