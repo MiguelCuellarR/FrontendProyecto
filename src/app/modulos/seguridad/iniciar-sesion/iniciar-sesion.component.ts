@@ -28,12 +28,16 @@ export class IniciarSesionComponent implements OnInit {
 /*Admin
 miguel.1701823659@ucaldas.edu.co
 98765
+
+Vendedor
+miguelcuellaromero@gmail.com
+0qAu5HN091Zn
 */ 
 
   construirFormulario() {
     this.fgValidador = this.fb.group({
-      correo: ['miguelcuellaromero@gmail.com', [Validators.required, Validators.email]],
-      clave: ['0qAu5HN091Zn', [Validators.required]],
+      correo: ['', [Validators.required, Validators.email]],
+      clave: ['', [Validators.required]],
       recaptchaReactive: new FormControl(null, Validators.required)
     });
   }

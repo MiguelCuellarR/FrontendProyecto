@@ -22,10 +22,10 @@
 
             <div class="input-field col s6">
                 <i class="material-icons prefix">add_location</i>
-                <select id="paises" formControlName="estado">
+                <select id="estados" formControlName="estado">
                     <option value="" disabled selected>Seleccionar Estado</option>
 
-                    <option value="{{c.id}}" *ngFor="let c of listaEstados;">{{c.nombre}}</option>
+                    <option value="{{e.id}}" *ngFor="let e of listaEstados;">{{e.nombre}}</option>
 
                 </select>
                 <label>Estados</label>
@@ -37,7 +37,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <i class="material-icons prefix">add_location</i>
-                <select id="ciudades" formControlName="cliente">
+                <select id="clientes" formControlName="cliente">
                     <option value="" disabled selected>Seleccionar Cliente</option>
 
                     <option value="{{c.id}}" *ngFor="let c of listaClientes;">{{c.documento}}</option>
@@ -48,10 +48,10 @@
 
             <div class="input-field col s6">
                 <i class="material-icons prefix">add_location</i>
-                <select id="roles" formControlName="inmueble">
+                <select id="inmuebles" formControlName="inmueble">
                     <option value="" disabled selected>Seleccionar Inmueble</option>
 
-                    <option value="{{c.id}}" *ngFor="let c of listaInmuebles;">{{c.codigo}}</option>
+                    <option value="{{i.id}}" *ngFor="let i of listaInmuebles;">{{i.codigo}}</option>
 
                 </select>
                 <label>Inmuebles</label>

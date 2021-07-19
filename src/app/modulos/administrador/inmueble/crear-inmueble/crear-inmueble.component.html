@@ -21,7 +21,7 @@
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">add_location</i>
-                <select id="paises" formControlName="bloque">
+                <select id="bloques" formControlName="bloque">
                     <option value="" disabled selected>Seleccionar bloque</option>
 
                     <option value="{{b.id}}" *ngFor="let b of listaBloques;">{{b.nombre}}</option>

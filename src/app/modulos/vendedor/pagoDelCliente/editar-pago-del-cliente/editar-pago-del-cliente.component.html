@@ -17,7 +17,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <i class="material-icons prefix">add_location</i>
-                <select id="ciudades" formControlName="solicitud">
+                <select id="solicitudes" formControlName="solicitud">
                     <option value="" disabled selected>Seleccionar Solicitud</option>
 
                     <option value="{{c.id}}" *ngFor="let c of listaSolicitudesEstudio;">{{c.id}}</option>
