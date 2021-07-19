@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
+import { EstadoModelo } from '../modelos/estado.modelo';
 import { SolicitudEstudioModelo } from '../modelos/solicitudEstudio.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -31,11 +32,11 @@ export class SolicitudEstudioService {
       {
         id: modelo.id,
         fecha: modelo.fecha,
-        oferta: modelo.oferta_economica,
-        inmueble: modelo.inmuebleId,
-        cliente: modelo.clienteId,
-        estado: modelo.estadoId,
-        usuario: modelo.usuarioId
+        oferta_economica: modelo.oferta_economica,
+        inmuebleId: modelo.inmuebleId,
+        clienteId: modelo.clienteId,
+        estadoId: modelo.estadoId,
+        usuarioId: modelo.usuarioId
       },
       {
         headers: new HttpHeaders({
@@ -44,16 +45,20 @@ export class SolicitudEstudioService {
       });
   }
 
+  ListarEstados(): Observable<EstadoModelo[]> {
+    return this.http.get<EstadoModelo[]>(`${this.urlb}/estados`)
+  }
+
   ModificarRegistro(modelo: SolicitudEstudioModelo): Observable<SolicitudEstudioModelo> {
     return this.http.put<SolicitudEstudioModelo>(`${this.urlb}/solicitudes-estudios/${modelo.id}`,
       {
         id: modelo.id,
         fecha: modelo.fecha,
-        oferta: modelo.oferta_economica,
-        inmueble: modelo.inmuebleId,
-        cliente: modelo.clienteId,
-        estado: modelo.estadoId,
-        usuario: modelo.usuarioId
+        oferta_economica: modelo.oferta_economica,
+        inmuebleId: modelo.inmuebleId,
+        clienteId: modelo.clienteId,
+        estadoId: modelo.estadoId,
+        usuarioId: modelo.usuarioId
       },
       {
         headers: new HttpHeaders({

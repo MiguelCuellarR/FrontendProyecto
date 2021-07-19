@@ -1,1 +1,41 @@
-<p>editar-pago-del-cliente works!</p>
+<div class="row">
+    <form [formGroup]="fgValidador" (ngSubmit)="ActualizarRegistro()" class="col s12">
+        <input type="hidden" formControlName="id">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">edit</i>
+                <input formControlName="comprobante" id="comprobante" type="text" class="validate">
+                <label class="active" for="comprobante">Comprobante</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">edit</i>
+                <input formControlName="valor" id="valor" type="number" class="validate">
+                <label class="active" for="valor">Valor</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">add_location</i>
+                <select id="ciudades" formControlName="solicitud">
+                    <option value="" disabled selected>Seleccionar Solicitud</option>
+
+                    <option value="{{c.id}}" *ngFor="let c of listaSolicitudesEstudio;">{{c.id}}</option>
+
+                </select>
+                <label>Solicitudes</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar
+                    <i class="material-icons right">save</i>
+                </button>
+                &nbsp;
+                <a class="waves-effect waves-light btn" routerLink="/vendedor/listar-pago"><i
+                        class="material-icons left">cancel</i>Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>

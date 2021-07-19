@@ -33,5 +33,21 @@ export class ListarSolicitudEstudioComponent implements OnInit {
     this.pagina = pag;
   }
 
+  verificarEliminacion(id?: String, cliente?: String) {
+    if (window.confirm("Eliminar el registro de " + cliente + " ?")) {
+      let modelo = new SolicitudEstudioModelo();
+      modelo.id = id;
+      modelo.clienteId = cliente;
+      this.servicio.EliminarRegistro(modelo).subscribe(
+        (datos) => {
+          alert("El registro de "+cliente+" Fue eliminado")
+          this.listaRegitros= this.listaRegitros.filter(x=> x.id != id)
+         }, (error) => {
+          alert("Error Eliminando le registro")
+        }
+      )
+    }
+  }
+
 
 }

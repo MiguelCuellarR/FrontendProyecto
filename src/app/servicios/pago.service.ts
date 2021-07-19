@@ -30,9 +30,9 @@ export class PagoService {
     return this.http.post<PagoModelo>(`${this.urlb}/pagos`,
       {
         id: modelo.id,
-        comp: modelo.comprobante,
-        val: modelo.valor,
-        solicitud: modelo.solicitudEstudioId
+        comprobante: modelo.comprobante,
+        valor: modelo.valor,
+        solicitudEstudioId: modelo.solicitudEstudioId
       },
       {
         headers: new HttpHeaders({
@@ -45,9 +45,9 @@ export class PagoService {
     return this.http.put<PagoModelo>(`${this.urlb}/pagos/${modelo.id}`,
       {
         id: modelo.id,
-        comp: modelo.comprobante,
-        val: modelo.valor,
-        solicitud: modelo.solicitudEstudioId
+        comprobante: modelo.comprobante,
+        valor: modelo.valor,
+        solicitudEstudioId: modelo.solicitudEstudioId
       },
       {
         headers: new HttpHeaders({

@@ -1,8 +1,8 @@
 export class PagoModelo {
 
     id?: String;
-    comprobante?: Number;
-    valor?: String;
+    comprobante?: String;
+    valor?: Number;
     solicitudEstudioId?: String;
 
 }

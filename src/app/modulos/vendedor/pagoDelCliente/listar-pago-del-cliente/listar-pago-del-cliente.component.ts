@@ -33,5 +33,20 @@ export class ListarPagoDelClienteComponent implements OnInit {
     this.pagina = pag;
   }
 
+  verificarEliminacion(id?: String, comprobante?: String) {
+    if (window.confirm("Eliminar el registro de " + comprobante + " ?")) {
+      let modelo = new PagoModelo();
+      modelo.id = id;
+      modelo.comprobante = comprobante;
+      this.servicio.EliminarRegistro(modelo).subscribe(
+        (datos) => {
+          alert("El registro de "+comprobante+" Fue eliminado")
+          this.listaRegitros= this.listaRegitros.filter(x=> x.id != id)
+         }, (error) => {
+          alert("Error Eliminando le registro")
+        }
+      )
+    }
+  }
 
 }
