@@ -24,7 +24,7 @@ const routes: Routes = [
     component: CrearClienteComponent
   },
   {
-    path: 'editar-cliente',
+    path: 'editar-cliente/:id',
     component: EditarClienteComponent
   },
   {
@@ -41,7 +41,7 @@ const routes: Routes = [
     component: CrearInformacionFinancieraClienteComponent
   },
   {
-    path: 'editar-informacionfinanciera',
+    path: 'editar-informacionfinanciera/:id',
     component: EditarInformacionFinancieraClienteComponent
   },
   {
@@ -58,7 +58,7 @@ const routes: Routes = [
     component: CrearPagoDelClienteComponent
   },
   {
-    path: 'editar-pago',
+    path: 'editar-pago/:id',
     component: EditarPagoDelClienteComponent
   },
   {
@@ -75,7 +75,7 @@ const routes: Routes = [
     component: CrearSolicitudEstudioComponent
   },
   {
-    path: 'editar-solicitudestudio',
+    path: 'editar-solicitudestudio/:id',
     component: EditarSolicitudEstudioComponent
   },
   {

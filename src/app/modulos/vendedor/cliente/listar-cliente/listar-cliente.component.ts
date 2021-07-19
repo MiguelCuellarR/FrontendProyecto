@@ -34,4 +34,20 @@ export class ListarClienteComponent implements OnInit {
     this.pagina = pag;
   }
 
+  verificarEliminacion(id?: String, documento?: Number) {
+    if (window.confirm("Eliminar el registro de " + documento + " ?")) {
+      let modelo = new ClienteModelo();
+      modelo.id = id;
+      modelo.documento = documento;
+      this.servicio.EliminarRegistro(modelo).subscribe(
+        (datos) => {
+          alert("El registro de "+documento+" Fue eliminado")
+          this.listaRegitros= this.listaRegitros.filter(x=> x.id != id)
+         }, (error) => {
+          alert("Error Eliminando le registro")
+        }
+      )
+    }
+  }
+
 }

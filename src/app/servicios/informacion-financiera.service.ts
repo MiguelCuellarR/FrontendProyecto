@@ -30,13 +30,13 @@ export class InformacionFinancieraService {
     return this.http.post<InformacionFinancieraModelo>(`${this.urlb}/infos-financieras`,
       {
         id: modelo.id,
-        ingresos: modelo.total_ingresos,
-        trabajo: modelo.datos_trabajo,
-        tiempo_trabajo: modelo.tiempo_trabajo_actual,
-        nom_ref_familiar: modelo.nombre_ref_familiar,
-        num_ref_familiar: modelo.telefono_ref_familiar,
-        nom_ref_personal: modelo.nombre_ref_personal,
-        num_ref_personal: modelo.telefono_ref_personal,
+        total_ingresos: modelo.total_ingresos,
+        datos_trabajo: modelo.datos_trabajo,
+        tiempo_trabajo_actual: modelo.tiempo_trabajo_actual,
+        nombre_ref_familiar: modelo.nombre_ref_familiar,
+        telefono_ref_familiar: modelo.telefono_ref_familiar,
+        nombre_ref_personal: modelo.nombre_ref_personal,
+        telefono_ref_personal: modelo.telefono_ref_personal,
         clienteId: modelo.clienteId
       },
       {
@@ -50,13 +50,13 @@ export class InformacionFinancieraService {
     return this.http.put<InformacionFinancieraModelo>(`${this.urlb}/infos-financieras/${modelo.id}`,
       {
         id: modelo.id,
-        ingresos: modelo.total_ingresos,
-        trabajo: modelo.datos_trabajo,
-        tiempo_trabajo: modelo.tiempo_trabajo_actual,
-        nom_ref_familiar: modelo.nombre_ref_familiar,
-        num_ref_familiar: modelo.telefono_ref_familiar,
-        nom_ref_personal: modelo.nombre_ref_personal,
-        num_ref_personal: modelo.telefono_ref_personal,
+        total_ingresos: modelo.total_ingresos,
+        datos_trabajo: modelo.datos_trabajo,
+        tiempo_trabajo_actual: modelo.tiempo_trabajo_actual,
+        nombre_ref_familiar: modelo.nombre_ref_familiar,
+        telefono_ref_familiar: modelo.telefono_ref_familiar,
+        nombre_ref_personal: modelo.nombre_ref_personal,
+        telefono_ref_personal: modelo.telefono_ref_personal,
         clienteId: modelo.clienteId
       },
       {

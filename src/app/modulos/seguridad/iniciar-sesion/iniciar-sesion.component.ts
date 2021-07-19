@@ -25,10 +25,15 @@ export class IniciarSesionComponent implements OnInit {
     private router: Router
   ) { }
 
+/*Admin
+miguel.1701823659@ucaldas.edu.co
+98765
+*/ 
+
   construirFormulario() {
     this.fgValidador = this.fb.group({
-      correo: ['miguel.1701823659@ucaldas.edu.co', [Validators.required, Validators.email]],
-      clave: ['98765', [Validators.required]],
+      correo: ['miguelcuellaromero@gmail.com', [Validators.required, Validators.email]],
+      clave: ['0qAu5HN091Zn', [Validators.required]],
       recaptchaReactive: new FormControl(null, Validators.required)
     });
   }

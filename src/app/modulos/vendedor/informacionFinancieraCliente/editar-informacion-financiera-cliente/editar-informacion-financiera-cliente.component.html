@@ -1,1 +1,73 @@
-<p>editar-informacion-financiera-cliente works!</p>
+<div class="row">
+    <form [formGroup]="fgValidador" (ngSubmit)="crearRegistro()" class="col s12">
+        <input type="hidden" formControlName="id">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">edit</i>
+                <input formControlName="trabajo" id="trabajo" type="text" class="validate">
+                <label class="active" for="trabajo">Trabajo</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">edit</i>
+                <input formControlName="tiempoTrabajo" id="tiempoTrabajo" type="number" class="validate">
+                <label class="active" for="tiempoTrabajo">Tiempo Trabajo Actual</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">edit</i>
+                <input formControlName="totalIngresos" id="totalIngresos" type="number" class="validate">
+                <label class="active" for="totalIngresos">Total Ingresos</label>
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">add_location</i>
+                <select id="ciudades" formControlName="cliente">
+                    <option value="" disabled selected>Seleccionar cliente</option>
+
+                    <option value="{{c.id}}" *ngFor="let c of listaClientes;">{{c.documento}}</option>
+
+                </select>
+                <label>Clientes</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">edit</i>
+                <input formControlName="nombreRefFam" id="nombreRefFam" type="text" class="validate">
+                <label class="active" for="nombreRefFam">Nombre Referencia familiar</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">more</i>
+                <input formControlName="telRefFam" id="telRefFam" type="text" class="validate">
+                <label class="active" for="telRefFam">Telefono Referencia Familiar</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">edit</i>
+                <input formControlName="nombreRefPer" id="nombreRefPer" type="text" class="validate">
+                <label class="active" for="nombreRefPer">Nombre Referencia Personal</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">more</i>
+                <input formControlName="telRefPer" id="telRefPer" type="text" class="validate">
+                <label class="active" for="telRefPer">Telefono Referencia Personal</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar
+                    <i class="material-icons right">save</i>
+                </button>
+                &nbsp;
+                <a class="waves-effect waves-light btn" routerLink="/vendedor/listar-informacionfinanciera"><i
+                        class="material-icons left">cancel</i>Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
