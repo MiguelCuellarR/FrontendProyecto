@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { mode } from 'crypto-js';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
+import { imagenModelo } from '../modelos/imagen.modelo';
 import { ProyectoModelo } from '../modelos/proyecto.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -21,6 +23,21 @@ export class ProyectoService {
   ListarRegistros(): Observable<ProyectoModelo[]>{
     return this.http.get<ProyectoModelo[]>(`${this.urlb}/proyectos`);
   }
+
+
+  
+
+
+  subirArchivo(modelo: File): Observable<File> {
+    return this.http.post<File>(`${this.urlb}/CargarImagenProyecto`,modelo)
+      
+  }
+
+  uploadFile(formData:FormData) {
+    return this.http.post(`${this.urlb}/CargarImagenProyecto`, formData);
+  }
+
+
 
   BuscarRegistro(id: String): Observable<ProyectoModelo>{
     return this.http.get<ProyectoModelo>(`${this.urlb}/proyectos/${id}`);

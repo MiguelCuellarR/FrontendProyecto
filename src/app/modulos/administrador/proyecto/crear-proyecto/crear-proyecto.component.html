@@ -19,11 +19,19 @@
                 <input formControlName="descripcion" id="descripcion" type="text" class="validate">
                 <label for="nombre">Descripción</label>
             </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">image</i>
-                <input formControlName="imagen" id="imagen" type="text" class="validate">
-                <label for="codigo">Imagen</label>
+
+            <div class="input-field col s6" >
+                <span class="btn btn-file">
+                    <i class="material-icons left">cloud_upload</i>
+                    Seleccionar Imagen Proyectop<input  (change)="fileChange($event)" type="file" id="btnUpload" formControlName="imagen" >
+                </span>
+
+         
+
+
             </div>
+
+
         </div>
 
         <div class="row">
