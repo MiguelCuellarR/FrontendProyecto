@@ -1,10 +1,10 @@
 
 
 <div class="row">
-    <div class="col s12 m7">
-        <div class="card w-40" *ngFor="let p of proyectos">
+    <div class="col">
+        <div class="card" *ngFor="let p of proyectos">
             <div class="card-image" >
-                <img [src]="'http://localhost:3000/archivo/2/' + p.imagen " class="responsive-img imagen prueba">
+                <img [src]="'http://localhost:3000/archivo/2/' + p.imagen " class="responsive-img w-20">
                 <span class="card-title">{{p.nombre}}</span>
             </div>
             <div class="card-content">
