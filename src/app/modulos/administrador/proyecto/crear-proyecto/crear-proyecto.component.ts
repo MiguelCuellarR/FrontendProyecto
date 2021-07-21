@@ -15,10 +15,11 @@ declare var InicializarSelect: any;
   styleUrls: ['./crear-proyecto.component.css']
 })
 export class CrearProyectoComponent implements OnInit {
-
+  imagenSeleccionada: any;
   listaCiudades: CiudadModelo[] = [];
   fgValidador: FormGroup = this.fb.group({});
   archivo?: File;
+  nombreArchivoCargado: String = "";
 
   uploadedFiles: Array<File> = [];
 
@@ -49,14 +50,14 @@ export class CrearProyectoComponent implements OnInit {
 
   crearRegistro() {
     if (this.fgValidador.invalid) {
-      alert("Formulario Invalido")
+      alert("Formulario Invalido, fíjese que se hubiese cargado la imagen y llenado todos los campos.")
     } else {
-      this.subir();
+      // this.subirImagen();
       let nombre = this.ObtenerFgvalidador.nombre.value;
       let codigo = this.ObtenerFgvalidador.codigo.value;
       let descripcion = this.ObtenerFgvalidador.descripcion.value;
-      let imagen = this.uploadedFiles[0].name;
       let ciudad = this.ObtenerFgvalidador.ciudad.value;
+      let imagen = this.ObtenerFgvalidador.nombreImagen.value;
 
 
 
@@ -67,7 +68,7 @@ export class CrearProyectoComponent implements OnInit {
 
       modelo.codigo = codigo;
       modelo.nombre = nombre;
-      modelo.imagen = this.uploadedFiles[0].name;
+      modelo.imagen = imagen;
       modelo.descripcion = descripcion;
       modelo.ciudadId = ciudad;
 
@@ -90,7 +91,8 @@ export class CrearProyectoComponent implements OnInit {
       nombre: ['', [Validators.required]],
       codigo: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
-      imagen: ['', [Validators.required]],
+      imagen: ['', []],
+      nombreImagen:['', [Validators.required]],
       ciudad: ['', [Validators.required]]
     });
   }
@@ -102,16 +104,23 @@ export class CrearProyectoComponent implements OnInit {
   }
 
 
-  fileChange(element: any) {
-    this.uploadedFiles = element.target.files;
+  async subirImagen() {
 
+    const formData = new FormData();
+    formData.append('file', this.imagenSeleccionada);
+    this.servicioProyecto.uploadFile(formData).subscribe(
+      (res) => {
+        let nombreArchivoCargado = res.filename;
+        this.fgValidador.controls.nombreImagen.setValue(nombreArchivoCargado);
+        console.log(nombreArchivoCargado)
+        console.log(this.fgValidador.controls.nombreImagen.value)
+      },
+      (err) => {
+        alert("Error cargando la imagen")
+      }
+    );
 
-  }
-
-  subir() {
-
-
-
+/*
      let formData = new FormData();
        for (var i = 0; i < this.uploadedFiles.length; i++) {
          formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
@@ -121,19 +130,28 @@ export class CrearProyectoComponent implements OnInit {
          console.log('response received is ', res);
        });
        
+*/
 
 
-
-
-/*
-    this.archivo = this.uploadedFiles[0]
+    /*this.archivo = this.uploadedFiles[0]
     console.log("El archivo a subir es ", this.archivo);
 
     this.servicioProyecto.subirArchivo(this.archivo).subscribe((res) => {
       console.log('response received is ', res);
-
+      this.ObtenerFgvalidador.imagen.setValue(res);
     });*/
 
+  }
+
+
+  CuandoSeleccioneImagen(event:any) {
+    if (event.target.files.length > 0) {
+      const f = event.target.files[0];
+      this.imagenSeleccionada = f;
+      console.log(f)
+    }else{
+      this.nombreArchivoCargado = "";
+    }
   }
 }
 

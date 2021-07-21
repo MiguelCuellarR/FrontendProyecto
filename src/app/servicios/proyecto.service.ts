@@ -33,8 +33,8 @@ export class ProyectoService {
       
   }
 
-  uploadFile(formData:FormData) {
-    return this.http.post(`${this.urlb}/CargarImagenProyecto`, formData);
+  uploadFile(formData:FormData):Observable<imagenModelo> {
+    return this.http.post<imagenModelo>(`${this.urlb}/CargarImagenProyecto`, formData);
   }
 
 
