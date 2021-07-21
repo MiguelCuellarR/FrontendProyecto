@@ -52,7 +52,6 @@ export class CrearProyectoComponent implements OnInit {
     if (this.fgValidador.invalid) {
       alert("Formulario Invalido, fíjese que se hubiese cargado la imagen y llenado todos los campos.")
     } else {
-      // this.subirImagen();
       let nombre = this.ObtenerFgvalidador.nombre.value;
       let codigo = this.ObtenerFgvalidador.codigo.value;
       let descripcion = this.ObtenerFgvalidador.descripcion.value;
@@ -62,9 +61,7 @@ export class CrearProyectoComponent implements OnInit {
 
 
       let modelo = new ProyectoModelo();
-      let archivo: any
 
-      archivo = this.ObtenerFgvalidador.imagen;
 
       modelo.codigo = codigo;
       modelo.nombre = nombre;
@@ -112,34 +109,12 @@ export class CrearProyectoComponent implements OnInit {
       (res) => {
         let nombreArchivoCargado = res.filename;
         this.fgValidador.controls.nombreImagen.setValue(nombreArchivoCargado);
-        console.log(nombreArchivoCargado)
-        console.log(this.fgValidador.controls.nombreImagen.value)
       },
       (err) => {
         alert("Error cargando la imagen")
       }
     );
 
-/*
-     let formData = new FormData();
-       for (var i = 0; i < this.uploadedFiles.length; i++) {
-         formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
-         this.archivo = this.uploadedFiles[i]
-       }
-       this.servicioProyecto.uploadFile(formData).subscribe((res)=> {
-         console.log('response received is ', res);
-       });
-       
-*/
-
-
-    /*this.archivo = this.uploadedFiles[0]
-    console.log("El archivo a subir es ", this.archivo);
-
-    this.servicioProyecto.subirArchivo(this.archivo).subscribe((res) => {
-      console.log('response received is ', res);
-      this.ObtenerFgvalidador.imagen.setValue(res);
-    });*/
 
   }
 

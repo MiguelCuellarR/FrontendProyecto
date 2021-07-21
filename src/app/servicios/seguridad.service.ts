@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
+import { imagenModelo } from '../modelos/imagen.modelo';
 import { UsuarioModelo } from '../modelos/Usuario.modelo';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class SeguridadService {
 
   datosDeSesion: BehaviorSubject<UsuarioModelo> = new BehaviorSubject<UsuarioModelo>(new UsuarioModelo());
 
-  urlb: String = DatosGenerales.urlBackend;
+  urlb: string = DatosGenerales.urlBackend;
   constructor(private http: HttpClient) {
     this.verificarSesion();
   }
@@ -24,6 +25,18 @@ export class SeguridadService {
       this.RefrescarDatosSesion(datosEnObjeto);
     }
   }
+
+
+
+  getPhotosProyectos() {
+    return this.http.get<imagenModelo[]>(`${this.urlb}/archivos/2`);
+  }
+
+  getPhoto(id: string) {
+    return this.http.get<imagenModelo>(`${this.urlb}/${id}`);
+  }
+
+
 
   reenviarContraseña(correo?: String): Observable<any> {
 

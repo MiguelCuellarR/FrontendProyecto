@@ -27,14 +27,16 @@
                 {{r.descripcion}}
             </th>
             <th>
-              
-                {{r.imagen}}
+                <div class=" img">
+                    <img [src]="'http://localhost:3000/archivo/2/' + r.imagen " class="w-40 h-32 rounded-full">
+                </div>
             </th>
             <th>
                 {{r.ciudadId}}
             </th>
             <th>
-                <a class="waves-effect waves-light btn" routerLink="/administrador/editar-proyecto/{{r.id}}"><i class="material-icons left">edit</i>Modificar</a>
+                <a class="waves-effect waves-light btn" routerLink="/administrador/editar-proyecto/{{r.id}}"><i
+                        class="material-icons left">edit</i>Modificar</a>
                 &nbsp;&nbsp;
                 <button class="btn waves-effect waves-light" type="button" name="action"
                     (click)="verificarEliminacion(r.id,r.nombre)">Eliminar

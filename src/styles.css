@@ -17,3 +17,8 @@
     cursor: inherit;
     display: block;
 }
+
+.pruebatamaño{
+    height: 50px;
+    width: 50px;
+}

@@ -1,6 +1,6 @@
 export class imagenModelo {
 
-    archivo?: File;
-    filename?: String;
-
+    nombre?: String;
+    descripcion?: String;
+    filename?: string;
 }
