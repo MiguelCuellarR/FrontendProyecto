@@ -1,5 +1,6 @@
 <br />
-<a class="waves-effect waves-light btn" routerLink="/vendedor/crear-pago"><i class="material-icons left">add</i>Agregar</a>
+<a class="waves-effect waves-light btn" routerLink="/vendedor/crear-pago"><i
+        class="material-icons left">add</i>Agregar</a>
 
 <table class="table responsive-table">
 
@@ -15,7 +16,12 @@
     <tbody>
         <tr *ngFor="let r of listaRegitros | paginate: { itemsPerPage: 6, currentPage: pagina }">
             <th>
-                {{r.comprobante}}
+                <button class="btn waves-effect waves-light" type="button" name="action"
+                    (click)="descargar(r.comprobante)">Descargar comprobante
+                    <i class="material-icons right">arrow_downward</i>
+                </button>
+
+
             </th>
             <th>
                 {{r.valor}}
@@ -24,18 +30,17 @@
                 {{r.solicitudEstudioId}}
             </th>
             <th>
-                <a class="waves-effect waves-light btn" routerLink="/vendedor/editar-pago/{{r.id}}"><i class="material-icons left">edit</i>Modificar</a>
+                <a class="waves-effect waves-light btn" routerLink="/vendedor/editar-pago/{{r.id}}"><i
+                        class="material-icons left">edit</i>Modificar</a>
                 &nbsp;&nbsp;
                 <button class="btn waves-effect waves-light" type="button" name="action"
-                (click)="verificarEliminacion(r.id, r.comprobante)">Eliminar
-                <i class="material-icons right">delete</i>
-            </button>
+                    (click)="verificarEliminacion(r.id, r.comprobante)">Eliminar
+                    <i class="material-icons right">delete</i>
+                </button>
             </th>
         </tr>
     </tbody>
 </table>
 
-<pagination-controls  (pageChange)="CambioPagina($event)"
-                      previousLabel="Anterior"
-                      nextLabel="Siguiente">
+<pagination-controls (pageChange)="CambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente">
 </pagination-controls>

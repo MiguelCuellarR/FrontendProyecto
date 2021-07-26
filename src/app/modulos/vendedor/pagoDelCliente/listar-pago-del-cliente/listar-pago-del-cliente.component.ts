@@ -18,6 +18,21 @@ export class ListarPagoDelClienteComponent implements OnInit {
     this.ObtenerListadoPagos();
   }
 
+  descargar( comprobante?:String){
+this.servicio.descargarArchivo(comprobante).subscribe(
+  (datos) => {
+    alert("descarga correcta")
+  },
+  (error) => {
+    alert("error descargando el archivo")
+    console.log(error);
+    
+  }
+)
+
+
+  }
+
   ObtenerListadoPagos() {
     this.servicio.ListarRegistros().subscribe(
       (datos) => {
