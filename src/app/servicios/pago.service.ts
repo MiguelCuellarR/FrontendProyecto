@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
 import { PagoModelo } from '../modelos/pago.modelo';
+import { PaisModelo } from '../modelos/pais.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
@@ -17,6 +18,15 @@ export class PagoService {
     private servicioSeguridad: SeguridadService) {
     this.token = this.servicioSeguridad.ObtenerTk();
   }
+
+
+  
+
+  uploadFile(formData:FormData):Observable<PagoModelo> {
+    return this.http.post<PagoModelo>(`${this.urlb}/CargarComprobantePago`, formData);
+  }
+
+
 
   ListarRegistros(): Observable<PagoModelo[]> {
     return this.http.get<PagoModelo[]>(`${this.urlb}/pagos`);

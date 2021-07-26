@@ -1,17 +1,31 @@
 <div class="row">
     <form [formGroup]="fgValidador" (ngSubmit)="crearRegistro()" class="col s12">
         <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">edit</i>
-                <input formControlName="comprobante" id="comprobante" type="text" class="validate">
-                <label for="comprobante">Comprobante</label>
-            </div>
+           
             <div class="input-field col s6">
                 <i class="material-icons prefix">edit</i>
                 <input formControlName="valor" id="valor" type="number" class="validate">
                 <label for="valor">Valor</label>
             </div>
         </div>
+
+
+
+
+        <div class="input-field col s3" >
+            <span class="btn btn-file">
+                <i class="material-icons left">cloud_upload</i>
+                Seleccionar Comprobante<input  (change)="CuandoSeleccioneArchivo($event)" type="file" id="btnUpload" formControlName="comprobante" >
+            </span>
+        </div>
+        <div class="input-field col s3">
+            <input type="button" (click)="subirArchivo()" class="btn" value="Cargar Archivo" />
+        </div>
+
+
+
+
+
 
         <div class="row">
             <div class="input-field col s6">

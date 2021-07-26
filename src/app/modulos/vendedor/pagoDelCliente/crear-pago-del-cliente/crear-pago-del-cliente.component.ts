@@ -17,6 +17,7 @@ export class CrearPagoDelClienteComponent implements OnInit {
 
   listaSolicitudesEstudio: SolicitudEstudioModelo[] = [];
   fgValidador: FormGroup = this.fb.group({});
+  archivoSeleccionado: any;
   constructor(private servicioSolEst: SolicitudEstudioService,
      private fb: FormBuilder,
       private servicioPago: PagoService,
@@ -46,7 +47,7 @@ export class CrearPagoDelClienteComponent implements OnInit {
     if (this.fgValidador.invalid) {
       alert("Formulario Invalido")
     } else {
-      let comprobante = this.ObtenerFgvalidador.comprobante.value;
+      let comprobante = this.ObtenerFgvalidador.nombreArchivo.value;
       let valor = this.ObtenerFgvalidador.valor.value;
       let solicitud = this.ObtenerFgvalidador.solicitud.value;
     
@@ -64,6 +65,7 @@ export class CrearPagoDelClienteComponent implements OnInit {
         },
         (error: any) => {
           alert(error.message);
+          
         })
     }
 
@@ -73,9 +75,10 @@ export class CrearPagoDelClienteComponent implements OnInit {
 
   construirFormulario() {
     this.fgValidador = this.fb.group({
-      comprobante: ['', [Validators.required]],
+      comprobante:['',[]],
       valor: ['', [Validators.required]],
       solicitud: ['', [Validators.required]],
+      nombreArchivo:['', [Validators.required]]
     });
 
   }
@@ -86,5 +89,38 @@ export class CrearPagoDelClienteComponent implements OnInit {
   get ObtenerFgvalidador() {
     return this.fgValidador.controls;
   }
+
+
+  async subirArchivo() {
+
+    const formData = new FormData();
+    formData.append('file', this.archivoSeleccionado);
+    this.servicioPago.uploadFile(formData).subscribe(
+      (res) => {
+        let nombreArchivoCargado = res.filename;
+        this.fgValidador.controls.nombreArchivo.setValue(nombreArchivoCargado);
+      },
+      (err) => {
+        alert("Error cargando el archivo")
+      }
+    );
+
+
+  }
+
+
+  CuandoSeleccioneArchivo(event:any) {
+    if (event.target.files.length > 0) {
+      const f = event.target.files[0];
+      this.archivoSeleccionado = f;
+      console.log(f)
+    }else{
+      this.archivoSeleccionado = "";
+    }
+  }
+
+
+
+
 
 }
