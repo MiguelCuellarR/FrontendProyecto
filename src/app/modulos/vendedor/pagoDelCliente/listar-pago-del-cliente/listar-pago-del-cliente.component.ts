@@ -18,17 +18,37 @@ export class ListarPagoDelClienteComponent implements OnInit {
     this.ObtenerListadoPagos();
   }
 
-  descargar( comprobante?:String){
-this.servicio.descargarArchivo(comprobante).subscribe(
-  (datos) => {
-    alert("descarga correcta")
-  },
-  (error) => {
-    alert("error descargando el archivo")
-    console.log(error);
-    
+
+  administradorDescarga(datos?: any, nombre?: String): void {
+
+    const dataType=datos.type;
+    const binaryData=[];
+    binaryData.push(datos);
+
+    const filePath = window.URL.createObjectURL(new Blob(binaryData,{type:dataType}));
+    const downloadLink=document.createElement('a');
+    downloadLink.href=filePath;
+    downloadLink.setAttribute('download','');
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+
+
   }
-)
+
+  descargar(comprobante?: String) {
+
+
+    this.servicio.descargarArchivo(comprobante).subscribe(
+      (datos) => {
+        alert("descarga correcta")
+        this.administradorDescarga(datos,comprobante);
+      },
+      (error) => {
+        alert("error descargando el archivo")
+        console.log(error);
+
+      }
+    )
 
 
   }
@@ -44,7 +64,7 @@ this.servicio.descargarArchivo(comprobante).subscribe(
     )
   }
 
-  CambioPagina(pag: number){
+  CambioPagina(pag: number) {
     this.pagina = pag;
   }
 
@@ -55,9 +75,9 @@ this.servicio.descargarArchivo(comprobante).subscribe(
       modelo.comprobante = comprobante;
       this.servicio.EliminarRegistro(modelo).subscribe(
         (datos) => {
-          alert("El registro de "+comprobante+" Fue eliminado")
-          this.listaRegitros= this.listaRegitros.filter(x=> x.id != id)
-         }, (error) => {
+          alert("El registro de " + comprobante + " Fue eliminado")
+          this.listaRegitros = this.listaRegitros.filter(x => x.id != id)
+        }, (error) => {
           alert("Error Eliminando le registro")
         }
       )

@@ -26,10 +26,8 @@ export class PagoService {
     return this.http.post<PagoModelo>(`${this.urlb}/CargarComprobantePago`, formData);
   }
 
-  descargarArchivo(nombre?: String): Observable<PagoModelo> {
-    console.log(`${this.urlb}/archivo/3/${nombre}`);
-    
-    return this.http.get<PagoModelo>(`${this.urlb}/archivo/3/${nombre}`);
+  descargarArchivo(nombre?: String): Observable<any> {
+    return this.http.get<PagoModelo>(`${this.urlb}/archivo/3/${nombre}`,{responseType:'blob' as 'json'});
   }
 
   ListarRegistros(): Observable<PagoModelo[]> {
