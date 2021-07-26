@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from 'src/config/datos.generales';
 import { ClienteModelo } from '../modelos/cliente.modelo';
+import { imagenModelo } from '../modelos/imagen.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
@@ -16,6 +17,21 @@ export class ClienteService {
     private servicioSeguridad: SeguridadService) {
     this.token = this.servicioSeguridad.ObtenerTk();
   }
+
+
+
+
+  subirArchivo(modelo: File): Observable<File> {
+    return this.http.post<File>(`${this.urlb}/CargarImagenCliente`,modelo)
+      
+  }
+
+  uploadFile(formData:FormData):Observable<imagenModelo> {
+    return this.http.post<imagenModelo>(`${this.urlb}/CargarImagenCliente`, formData);
+  }
+
+
+
 
   ListarRegistros(): Observable<ClienteModelo[]> {
     return this.http.get<ClienteModelo[]>(`${this.urlb}/clientes`);

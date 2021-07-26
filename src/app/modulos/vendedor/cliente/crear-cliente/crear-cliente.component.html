@@ -19,11 +19,16 @@
                 <input formControlName="apellido" id="apellido" type="text" class="validate">
                 <label for="apellido">Apellido</label>
             </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">more</i>
-                <input formControlName="fotografia" id="fotografia" type="text" class="validate">
-                <label for="fotografia">Fotografía</label>
+            <div class="input-field col s3" >
+                <span class="btn btn-file">
+                    <i class="material-icons left">cloud_upload</i>
+                    Seleccionar Imagen cliente<input  (change)="CuandoSeleccioneImagen($event)" type="file" id="btnUpload" formControlName="imagen" >
+                </span>
             </div>
+            <div class="input-field col s3">
+                <input type="button" (click)="subirImagen()" class="btn" value="Cargar Imagen" />
+            </div>
+
         </div>
 
         <div class="row">

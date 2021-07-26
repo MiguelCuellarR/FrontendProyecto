@@ -34,7 +34,9 @@
                 {{r.fec_nacimiento}}
             </th>
             <th>
-                {{r.fotografia}}
+                <div class=" img">
+                    <img [src]="'http://localhost:3000/archivo/1/' + r.fotografia "  height="200" width="200">
+                </div>
             </th>
             <th>
                 {{r.num_celular}}
@@ -49,8 +51,8 @@
                 {{r.ciudadId}}
             </th>
             <th>
-                <a class="waves-effect waves-light btn" routerLink="/vendedor/editar-cliente/{{r.id}}"><i
-                        class="material-icons left">edit</i>Modificar</a>
+                <a class="waves-effect waves-light btn" routerLink="/vendedor/editar-cliente/{{r.id}}">Modificar<i
+                        class="material-icons left">edit</i></a>
                 &nbsp;&nbsp;
                 <button class="btn waves-effect waves-light" type="button" name="action"
                     (click)="verificarEliminacion(r.id, r.documento)">Eliminar
